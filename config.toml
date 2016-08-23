@@ -1,0 +1,51 @@
+baseurl = "http://ashblog.ru"
+languageCode = "ru-RU"
+title = ".ash"
+#uglyurls = true
+MetaDataFormat = "toml"
+theme = "slender"
+paginate = 3
+PaginatePath = "/"
+
+[author]
+    name = "alexander"
+    
+[menu]
+
+    # Menu for the nav bar.
+    # There must always be one item present (e.g. home).
+    [[menu.main]]
+    identifier = "home"
+    name       = ".дом"
+    url        = "/"
+    weight     = 0
+
+    [[menu.main]]
+    identifier = "about"
+    name       = ".я"
+    url        = "/about/"
+    weight     = 1
+    
+[params]
+
+    # Change the color scheme of Slender.
+    # See above for preview and list of color schemes.
+    colorscheme = "white"
+
+    # Tagline; HTML accepted here. Keep it concise.
+    tagline = "LIV"
+    
+    # Footer; Markdown accepted here.
+    footer = "-"
+    
+    # Social links, must be full URLs (e.g. https://github.com/CrimsonRay/).
+    # Remove, comment, or leave blank any field to leave them out.
+    #email = "mailto:your-email"
+    #github = "url-to-your-github"
+    #bitbucket = "url-to-your-bitbucket"
+    #twitter = "url-to-your-twitter"
+    #stackoverflow = "url-to-your-stackoverflow"
+    #linkedin = "url-to-your-linkedin"
+    facebook = "https://www.facebook.com/a.shelopukho"
+    instagram = "https://www.instagram.com/biogenez"
+    vk = "https://vk.com/shelopukho"
