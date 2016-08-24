@@ -1,4 +1,4 @@
-baseurl = "http://ashblog.ru"
+baseurl = "https://biogenez.github.io/ashblog"
 languageCode = "ru-RU"
 title = ".ash"
 #uglyurls = true

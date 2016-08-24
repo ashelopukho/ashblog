@@ -4,7 +4,7 @@ draft = false
 title = "о"
 +++
 
-{{< figure src="/images/winter.jpg" title="-15" >}}
+{{< figure src="images/winter.jpg" title="-15" >}}
 
 Всем привет!
 
