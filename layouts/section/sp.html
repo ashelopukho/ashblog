@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+<section id="article-listing">
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "sp") }}
+    {{ range $paginator.Pages }}
+    <article>
+        <h1 class="article-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+        <!--<p class="article-info">
+            <strong>{{ .Date.Format "02-01-2006" }}</strong>
+        </p>-->
+        {{ .Summary }}
+        {{ if .Truncated }}<a href="{{ .Permalink }}"><p class="article-read-more">.читать</a></p>{{ end }}
+    </article>
+    {{ end }}
+    {{ template "_internal/pagination.html" . }}
+</section>
+{{ partial "footer.html" . }}
