@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>.ash</title>
-    <link>ashblog.ru/</link>
+    <link>http://ashblog.ru/</link>
     <description>Recent content on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
     <lastBuildDate>Wed, 24 Aug 2016 15:47:25 +0200</lastBuildDate>
-    <atom:link href="ashblog.ru/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ashblog.ru/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>my sp new post</title>
-      <link>/ashblog.ru/sp/my-sp-new-post/</link>
+      <link>http://ashblog.ru/sp/my-sp-new-post/</link>
       <pubDate>Wed, 24 Aug 2016 15:47:25 +0200</pubDate>
       
-      <guid>/ashblog.ru/sp/my-sp-new-post/</guid>
+      <guid>http://ashblog.ru/sp/my-sp-new-post/</guid>
       <description></description>
     </item>
     
     <item>
       <title>11-17 янв 2016</title>
-      <link>/ashblog.ru/post/second/</link>
+      <link>http://ashblog.ru/post/second/</link>
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
-      <guid>/ashblog.ru/post/second/</guid>
+      <guid>http://ashblog.ru/post/second/</guid>
       <description>
 &lt;figure &gt;
     
-        &lt;img src=&#34;ashblog.ru/images/bsea.jpg&#34; /&gt;
+        &lt;img src=&#34;http://ashblog.ru/images/bsea.jpg&#34; /&gt;
     
     
     &lt;figcaption&gt;
@@ -44,14 +44,14 @@
     
     <item>
       <title>11-17 янв 2016</title>
-      <link>/ashblog.ru/post/third/</link>
+      <link>http://ashblog.ru/post/third/</link>
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
-      <guid>/ashblog.ru/post/third/</guid>
+      <guid>http://ashblog.ru/post/third/</guid>
       <description>
 &lt;figure &gt;
     
-        &lt;img src=&#34;ashblog.ru/images/stone.jpg&#34; /&gt;
+        &lt;img src=&#34;http://ashblog.ru/images/stone.jpg&#34; /&gt;
     
     
     &lt;figcaption&gt;
@@ -68,10 +68,10 @@
     
     <item>
       <title>18-24 янв 2016</title>
-      <link>/ashblog.ru/post/first1/</link>
+      <link>http://ashblog.ru/post/first1/</link>
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
-      <guid>/ashblog.ru/post/first1/</guid>
+      <guid>http://ashblog.ru/post/first1/</guid>
       <description>
 
 &lt;h5 id=&#34;понедельник&#34;&gt;.понедельник&lt;/h5&gt;
@@ -117,10 +117,10 @@
     
     <item>
       <title>о</title>
-      <link>/ashblog.ru/post/first/</link>
+      <link>http://ashblog.ru/post/first/</link>
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
-      <guid>/ashblog.ru/post/first/</guid>
+      <guid>http://ashblog.ru/post/first/</guid>
       <description>
 &lt;figure &gt;
     
@@ -141,16 +141,16 @@
     
     <item>
       <title>.я</title>
-      <link>/ashblog.ru/about/</link>
+      <link>http://ashblog.ru/about/</link>
       <pubDate>Sat, 09 Jan 2016 18:45:08 +0200</pubDate>
       
-      <guid>/ashblog.ru/about/</guid>
+      <guid>http://ashblog.ru/about/</guid>
       <description>
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;ashblog.ru/images/me.jpg&#34; /&gt;
+        &lt;img src=&#34;http://ashblog.ru/images/me.jpg&#34; /&gt;
     
     
     &lt;figcaption&gt;
