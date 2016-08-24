@@ -1,4 +1,4 @@
-baseurl = "https://biogenez.github.io/ashblog"
+baseurl = "http://ashblog.ru/"
 languageCode = "ru-RU"
 title = ".ash"
 #uglyurls = true
@@ -29,7 +29,7 @@ PaginatePath = "/"
     [[menu.main]]
     identifier = "about"
     name       = ".я"
-    url        = "/about/"
+    url        = "about/"
     weight     = 2
     
 [params]
