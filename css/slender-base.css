@@ -1,0 +1,259 @@
+/******************************************************************************
+ *
+ * slender-base.css
+ * Slender theme for Hugo by CrimsonRay
+ * https://github.com/CrimsonRay/slender
+ *
+ *****************************************************************************/
+
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans);
+
+body {
+    /*font-family: "Open Sans", Helvetica, sans-serif;*/
+    font-family: monospace;
+    height: 100%;
+    margin: 0;
+}
+
+figure {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Container */
+
+.container {
+    min-height: calc(100vh - 68px);
+}
+
+.container:after {
+    content: "";
+    display: block;
+    height: 68px;
+}
+
+/* Navigation */
+
+nav ul {
+    text-align: center;
+    padding: 0px;
+    margin-top: 0;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin-top: 32px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 13px;
+}
+
+/* Header */
+
+header {
+    height: 300px;
+}
+
+h1.brand {
+    font-family: "Fjalla One", Helvetica, sans-serif;
+    font-size: 68px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-align: center;
+}
+
+h1.title {
+    font-family: "Fjalla One", Helvetica, sans-serif;
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-top: 112px;
+}
+
+header p {
+    opacity: 0.8;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+header p a .fa {
+    font-size: 30px;
+    padding-right: 10px;
+}
+
+/* Pagination */
+
+.pagination {
+    margin-top: 60px;
+    padding: 0 0 0 0;
+    text-align: center;
+    font-family: monospace;
+}
+
+.pagination li {
+    list-style-type: none;
+    display: inline-block;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.pagination li.active {
+    opacity: 1.0;
+}
+
+.pagination li.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/* Images */
+
+figure figcaption {
+    /*margin-top: -40px;*/
+    text-align: center;
+}
+
+figure figcaption h4 {
+    font-weight: lighter;
+}
+
+figure figcaption p {
+    margin-top: -20px;
+    font-size: 12px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Articles */
+
+#article-listing,
+.article-content {
+    margin: 88px auto;
+    max-width: 640px;
+}
+
+article {
+    margin-top: 28px;
+    font-size: 14px;
+}
+
+article p {
+    background-color: rgb(240, 240, 240);
+    font-family: monospace;
+    /*color: #444;*/
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+article p:empty{
+    background-color: #fff;
+    display: none;
+}
+
+article h5 {
+    font-family: monospace;
+    max-width: 640px;
+    margin: 0 auto;
+    /*background-color: pink;*/
+    padding: 4px 0px;
+}
+
+.article-title {
+    font-size: 14px;
+    line-height: 38px;
+    /*border-bottom: 1px solid #F5F5F5;*/
+    font-weight: 100;
+    text-align: center;
+}
+
+
+.article-title a {
+    color: #000 !important;
+    /*text-decoration: none;*/
+}
+
+.article-info {
+    color: #7e7e7e;
+    font-size: 14px;
+    margin-top: -20px;
+}
+
+.article-summary {
+    margin-top: 22px;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.article-read-more {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    background-color: #fff;
+    text-align: right;
+}
+
+.article-read-more a {
+    padding: 0px !important; 
+}
+
+.article-content {
+    font-size: 14px;
+    font-family: Helvetica, sans-serif;
+    /*line-height: 28px;*/
+}
+
+.article-content .btn-back{
+    max-width:640px; 
+    margin:0 auto;
+    text-align:center;
+}
+
+.article-content code.hljs {
+    padding: 20px;
+}
+
+/*.article-content * a {
+    color: #000 !important;
+}
+*/
+
+.article-content .btn-back a{
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #000;
+}
+
+/* Footer */
+
+footer {
+    height: 68px;
+}
+
+footer p {
+    text-align: center;
+    padding-top: 24px;
+    font-size: 14px;
+}
+
+/* Smaller screen sizes */
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 48px;
+    }
+    #article-listing {
+        margin: 20px;
+    }
+    .article-content {
+        margin: 20px;
+    }
+}
