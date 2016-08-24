@@ -141,7 +141,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://biogenez.github.io/ashblog/images/me.jpg&#34; /&gt;
+        &lt;img src=&#34;images/me.jpg&#34; /&gt;
     
     
     &lt;figcaption&gt;
@@ -156,15 +156,14 @@
 
 &lt;p&gt;.name(alexander)&lt;br /&gt;
 .russia(kaliningrad)&lt;br /&gt;
-.it(c#,js,sharepoint)&lt;br /&gt;
+.it(c#,js,sharepoint,office365)&lt;br /&gt;
 .sport(running,riding)&lt;/p&gt;
 
 &lt;h5 id=&#34;блог&#34;&gt;.блог&lt;/h5&gt;
 
 &lt;p&gt;.hugo(&lt;a href=&#34;https://gohugo.io&#34;&gt;https://gohugo.io&lt;/a&gt;)&lt;br /&gt;
 .theme(inspired-by-slender)&lt;br /&gt;
-.no(comments)&lt;br /&gt;
-.test(&lt;a href=&#34;http://virtosite-staging.azurewebsites.net&#34;&gt;http://virtosite-staging.azurewebsites.net&lt;/a&gt;)&lt;/p&gt;
+.no(comments)&lt;/p&gt;
 </description>
     </item>
     
