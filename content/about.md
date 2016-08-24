@@ -5,17 +5,15 @@ title = ".я"
 
 +++
 
-{{< figure src="/images/me.jpg" title="-" >}}
+{{< figure src="images/me.jpg" title="-" >}}
 
 ##### .о
 .name(alexander)  
 .russia(kaliningrad)    
-.it(c#,js,sharepoint)  
+.it(c#,js,sharepoint,office365)  
 .sport(running,riding)  
  
 ##### .блог  
 .hugo(https://gohugo.io)  
 .theme(inspired-by-slender)  
-.no(comments)  
-.test(http://virtosite-staging.azurewebsites.net)
- 
+.no(comments)
