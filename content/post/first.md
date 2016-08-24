@@ -6,6 +6,4 @@ title = "о"
 
 {{< figure src="images/winter.jpg" title="-15" >}}
 
-Всем привет!
-
 <!--more-->

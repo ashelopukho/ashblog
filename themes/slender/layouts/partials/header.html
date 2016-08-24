@@ -33,7 +33,7 @@
                 </nav>
                 {{ if eq .Section "page" }}
                     <h1 class="title">{{ .Title }}</h1>
-                {{ else if eq .Section "post" }}
+                {{ else if (or (eq .Section "post") (eq .Section "sp")) }}
                     <div style="background-color:pink;width:200px;margin: 0 auto;">
                     <h1 class="brand"><a style="text-decoration:none;" 
                             href="{{ .URL | absURL }}">{{ .Site.Title }}</a></h1>
