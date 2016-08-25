@@ -54,4 +54,7 @@ PaginatePath = "/"
     #linkedin = "url-to-your-linkedin"
     facebook = "https://www.facebook.com/a.shelopukho"
     instagram = "https://www.instagram.com/biogenez"
-    vk = "https://vk.com/shelopukho"
+
+    # Google Analytics
+    # Remove, comment, or leave it blank if you don't have one.
+    ganalytics = "UA-50925053-3"
