@@ -10,7 +10,29 @@
     <atom:link href="http://ashblog.ru/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>11-17 янв 2016</title>
+      <title></title>
+      <link>http://ashblog.ru/post/first/</link>
+      <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/post/first/</guid>
+      <description>
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/winter.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;-15&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>http://ashblog.ru/post/second/</link>
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
@@ -28,13 +50,11 @@
     
 &lt;/figure&gt;
 
-
-&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>11-17 янв 2016</title>
+      <title></title>
       <link>http://ashblog.ru/post/third/</link>
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
@@ -52,81 +72,6 @@
     
 &lt;/figure&gt;
 
-
-&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>18-24 янв 2016</title>
-      <link>http://ashblog.ru/post/first1/</link>
-      <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
-      
-      <guid>http://ashblog.ru/post/first1/</guid>
-      <description>
-
-&lt;h5 id=&#34;понедельник&#34;&gt;.понедельник&lt;/h5&gt;
-
-&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;images/winter.jpg&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Зима. Калининград. -15&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;h5 id=&#34;вторник&#34;&gt;.вторник&lt;/h5&gt;
-
-&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;images/me.jpg&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;-15&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;h5 id=&#34;среда&#34;&gt;.среда&lt;/h5&gt;
-
-&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>о</title>
-      <link>http://ashblog.ru/post/first/</link>
-      <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
-      
-      <guid>http://ashblog.ru/post/first/</guid>
-      <description>
-&lt;figure &gt;
-    
-        &lt;img src=&#34;images/winter.jpg&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;-15&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Всем привет!&lt;/p&gt;
 </description>
     </item>
     

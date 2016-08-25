@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="SP: Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля) &middot; .ash ">
+        <meta property="og:site_name" content=".ash"/>
+        <meta property="og:description" content="Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля)">
+        <meta property="og:url" content="http://ashblog.ru/sp/sponline-migrate-list/" />
+        <meta property="og:locale" content="ru-RU">
+        <meta name="author" content="alexander">
+        <meta name="description" content="Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля)">
+        <meta name="keywords" content="">
+        <meta name="generator" content="Hugo 0.16" />
+        <link rel="icon" href="http://ashblog.ru/assets/favicon.ico" type="image/x-icon"> 
+        <link rel="stylesheet" href="http://ashblog.ru/css/slender-base.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/slender-color-schemes.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/font-awesome-4.5.0.min.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/highlight-9.0.0-default.min.css">
+        <title>
+            
+                SP: Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля) &middot; .ash
+            
+        </title>
+    </head>
+    <body class="color-scheme-white">
+        <div class="container">
+            <header>
+                <nav>
+                    <ul><li><a href="http://ashblog.ru/">.дом</a></li><li><a href="http://ashblog.ru/sp/">.sp</a></li><li><a href="http://ashblog.ru/about/">.я</a></li></ul>
+                </nav>
+                
+                    <div style="background-color:pink;width:200px;margin: 0 auto;">
+                    <h1 class="brand"><a style="text-decoration:none;" 
+                            href="http://ashblog.ru/">.ash</a></h1>
+                       </div>
+                    <aside>
+                        <p>SP: Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля)</p>
+                    </aside>
+                
+            </header>
+<article class="article-content">
+    <p>В этом посте мы рассмотрим пример переноса списка с содержимым между коллекциями сайтов.
+&ldquo;Из коробки&rdquo; нам доступен следующий вариант: сохраняем список как шаблон (list settings -&gt; save list as template).
+Cкачиваем сохранённый шаблон из List Template Gallery, и загружаем его в List Template Gallery на той
+коллекции сайтов, где мы хотим восстановить список.</p>
+
+<p>Это вариант работает в том случае, если в списке не используются колонки типа Person и Lookup.
+Колонки с типом Person будут восстановлены, но значения в этих колонках могут быть искажены.
+Значения в колонках типа Person сохраняются как <strong>19;#User Name</strong> (где 19 - ID пользователя, User Name - имя пользователя).
+А восстанавливаются значения по ID. ID пользователя уникален в рамках коллекции сайтов. Поэтому при переносе списка на другую
+коллекцию сайтов, может оказаться, что этот ID будет присвоен другому пользователю, либо вовсе отсутствовать.</p>
+
+<p>Lookup поле не получится восстановить через List Template. Даже если мы восстановим (предварительно сохранив в качестве шаблона)
+список на который ссылается Lookup поле, значения (в списке с Lookup полем) не будут восстановлены. В шаблоне списка сохраняется
+ID списка, на который ссылается колонка. А при восстановлении из шаблона, список получает уникальный ID.</p>
+
+<p>Чтобы решить проблему с переноcом воспользуемся: <a href="http://download.virtosoftware.com/utils/Virto.BackupAndRecovery.Cmd.zip">Virto Backup &amp; Recovery Tool</a><br />
+ Это командная утилита, которая позволяет сохранять/восстанавивать данные в SharePoint Online.</p>
+
+<p>Для примера я создал два списка: <strong>Test_List</strong> и <strong>Test_List_2</strong>. В список Test_List добавлены два поля:<br />
+ - Person (тип Person or Group)<br />
+ - MyLookup (тип Lookup) - ссылается на поле Title из списка Test_List_2</p>
+
+
+<figure >
+    
+        <img src="/images/test_list.png" />
+    
+    
+</figure>
+
+
+<p>По умолчанию <strong>Virto Backup &amp; Recovery</strong> сохраняет в backup большое кол-во информации (пользователи, списки, права, группы и т.д.)<br />
+Т.к. нам необходимо перенести только два списка, потребуется создать конфигурационный файл.</p>
+
+<p>Находим в папке с утилитой (virtobr.exe) файл <strong>Config.xml</strong>. И копируем его с новым названием, например <strong>TestConfig.xml</strong>.<br />
+Открываем TestConfig.xml в любом текстовом редакторе (я использую <a href="https://code.visualstudio.com">VS Code</a>)</p>
+
+
+<figure >
+    
+        <img src="/images/testconfig_before.png" />
+    
+    
+    <figcaption>
+        <h4>TestConfig.xml до изменений.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>Для нашего примера заменим все значения <strong>true</strong> на <strong>false</strong>, за исключением <strong>SiteUsers</strong> и <strong>WebLists</strong>.<br />
+Параметр SiteUsers необходим для того, чтобы утилита смогла правильно перенести пользователей (либо установить соответствие между ними по User Login).<br />
+А WebLists - для того, чтобы были сохранены списки.<br />
+Так как нам не требуется сохранять все списки, а только два (Test_List и Test_List_2), добавим информацию об этом в наш конфигурационный файл.</p>
+
+<pre><code class="language-xml">&lt;IncludeFilter&gt;
+      &lt;Webs&gt;
+        &lt;WebBackupConfig&gt;
+          &lt;ServerRelativeUrl&gt;/sites/b&lt;/ServerRelativeUrl&gt;
+          &lt;Lists&gt;
+            &lt;ListBackupConfig&gt;
+              &lt;Title&gt;Test_List&lt;/Title&gt;
+            &lt;/ListBackupConfig&gt;
+            &lt;ListBackupConfig&gt;
+              &lt;Title&gt;Test_List_2&lt;/Title&gt;
+            &lt;/ListBackupConfig&gt;
+          &lt;/Lists&gt;
+        &lt;/WebBackupConfig&gt;
+      &lt;/Webs&gt;
+    &lt;/IncludeFilter&gt;
+</code></pre>
+
+<p><strong>ServerRelativeUrl</strong> - относительный адрес сайта, на котором находятся списки.<br />
+Ниже примеры значений:<br />
+<a href="https://testportal.sharepoint.com">https://testportal.sharepoint.com</a>, значение <strong>/</strong> (главный сайт)<br />
+<a href="https://testportal.sharepoint.com/subsite">https://testportal.sharepoint.com/subsite</a>, значение <strong>/subsite</strong> (подсайт)
+<a href="https://testportal.sharepoint.com/sites/testsite">https://testportal.sharepoint.com/sites/testsite</a>, значение <strong>/sites/testsite</strong></p>
+
+<p>Итоговое содержимое xml-файла TestConfig.xml:</p>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;GlobalOptions xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;BackupConfig&gt;
+    &lt;Recursive&gt;false&lt;/Recursive&gt;
+    &lt;SiteGroups&gt;false&lt;/SiteGroups&gt;
+    &lt;SiteOwners&gt;false&lt;/SiteOwners&gt;
+    &lt;SiteUsers&gt;true&lt;/SiteUsers&gt;
+    &lt;WebContentTypes&gt;false&lt;/WebContentTypes&gt;
+    &lt;WebFields&gt;false&lt;/WebFields&gt;
+    &lt;WebLists&gt;true&lt;/WebLists&gt;
+    &lt;WebRoleDefinition&gt;false&lt;/WebRoleDefinition&gt;
+    &lt;WebRoleAssignments&gt;false&lt;/WebRoleAssignments&gt;
+    &lt;IncludeFilter&gt;
+      &lt;Webs&gt;
+        &lt;WebBackupConfig&gt;
+          &lt;ServerRelativeUrl&gt;/sites/b&lt;/ServerRelativeUrl&gt;
+          &lt;Lists&gt;
+            &lt;ListBackupConfig&gt;
+              &lt;Title&gt;Test_List&lt;/Title&gt;
+            &lt;/ListBackupConfig&gt;
+            &lt;ListBackupConfig&gt;
+              &lt;Title&gt;Test_List_2&lt;/Title&gt;
+            &lt;/ListBackupConfig&gt;
+          &lt;/Lists&gt;
+        &lt;/WebBackupConfig&gt;
+      &lt;/Webs&gt;
+    &lt;/IncludeFilter&gt;
+  &lt;/BackupConfig&gt;
+  &lt;RestoreConfig&gt;
+  &lt;/RestoreConfig&gt;
+&lt;/GlobalOptions&gt;
+</code></pre>
+
+<p>Теперь запускаем cmd.exe (win -&gt; cmd.exe), и переходим в папку с утилитой <strong>Virto Backup &amp; Recovery</strong><br />
+(В VS Code можно нажать <strong>F1</strong>, ввести <strong>Create new intergrated terminal</strong>, нажать enter)</p>
+
+<p>Запускаем <strong>virtobr.exe</strong> с параметрами:<br />
+virtobr.exe -o backup -s <a href="https://testportal.sharepoint.com/sites/b">https://testportal.sharepoint.com/sites/b</a> -d c:\TestBackup -u mylogin@testportal.com -p MyP@$sWoRD1 <code>--</code>ConfigPath TestConfig.xml</p>
+
+<p><strong>-o</strong> : тип выполняемой операции (backup,recovery)<br />
+<strong>-s</strong> : адрес сайта (либо папки, для операции recovery)<br />
+<strong>-d</strong> : адрес папки (сайта, для операции recovery), в которую будет сохранён backup (папка будет создана автоматически и к ней будет добавлен TimeStamp (например TestBackup<strong>_201608251011</strong>))<br />
+<strong>-u</strong> : логин пользователя, для подключения к SharePoint<br />
+<strong>-p</strong> : пароль пользователя, для подключения к SharePoint<br />
+<strong><code>--</code>ConfigPath</strong> : название конфигурационного файла (если не указать, будет использоваться стандартный Config.xml)</p>
+
+<p>В результате выполнения команды будет создана папка (вида TestBackup<strong>_201608251011</strong>), в которой будут файлы
+для созданного backup.</p>
+
+<p>Для того, чтобы восстановить (перенести) сохранённые списки, потребуется запустить утилиту ещё раз, с небольшими изменениями в параметрах:<br />
+virtobr.exe -o recovery -s &ldquo;c:\TestBackup_201608251011&rdquo; -d &ldquo;<a href="https://testportal.sharepoint.com/sites/c&quot;">https://testportal.sharepoint.com/sites/c&quot;</a> -u mylogin@testportal.com -p MyP@$sWoRD1</p>
+
+<p>В качестве операции (-o) указываем <strong>recovery</strong>, источником (-s) теперь служит адрес папки с backup, а назначением (-d) - адрес другой коллекции сайтов.<br />
+Указывать конфигурационный файл не требуется.</p>
+
+<p>После того, как восстановление будет выполнено, проверим результат:
+
+<figure >
+    
+        <img src="/images/test_list_recovery.png" />
+    
+    
+</figure>
+</p>
+
+<p>Как видим, у нас появился список с элементами, в которых восстановлены поля типа Lookup и Person.</p>
+
+</article>
+        </div>
+        <footer>
+            <p>-</p>
+        </footer>
+        <script src="http://ashblog.ru/js/highlight-9.0.0.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+    </body>
+</html>

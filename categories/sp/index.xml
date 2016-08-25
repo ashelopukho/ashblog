@@ -10,12 +10,159 @@
     <atom:link href="http://ashblog.ru/categories/sp/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>my sp new post</title>
-      <link>http://ashblog.ru/sp/my-sp-new-post/</link>
+      <title>SP: Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля)</title>
+      <link>http://ashblog.ru/sp/sponline-migrate-list/</link>
       <pubDate>Wed, 24 Aug 2016 15:47:25 +0200</pubDate>
       
-      <guid>http://ashblog.ru/sp/my-sp-new-post/</guid>
-      <description></description>
+      <guid>http://ashblog.ru/sp/sponline-migrate-list/</guid>
+      <description>&lt;p&gt;В этом посте мы рассмотрим пример переноса списка с содержимым между коллекциями сайтов.
+&amp;ldquo;Из коробки&amp;rdquo; нам доступен следующий вариант: сохраняем список как шаблон (list settings -&amp;gt; save list as template).
+Cкачиваем сохранённый шаблон из List Template Gallery, и загружаем его в List Template Gallery на той
+коллекции сайтов, где мы хотим восстановить список.&lt;/p&gt;
+
+&lt;p&gt;Это вариант работает в том случае, если в списке не используются колонки типа Person и Lookup.
+Колонки с типом Person будут восстановлены, но значения в этих колонках могут быть искажены.
+Значения в колонках типа Person сохраняются как &lt;strong&gt;19;#User Name&lt;/strong&gt; (где 19 - ID пользователя, User Name - имя пользователя).
+А восстанавливаются значения по ID. ID пользователя уникален в рамках коллекции сайтов. Поэтому при переносе списка на другую
+коллекцию сайтов, может оказаться, что этот ID будет присвоен другому пользователю, либо вовсе отсутствовать.&lt;/p&gt;
+
+&lt;p&gt;Lookup поле не получится восстановить через List Template. Даже если мы восстановим (предварительно сохранив в качестве шаблона)
+список на который ссылается Lookup поле, значения (в списке с Lookup полем) не будут восстановлены. В шаблоне списка сохраняется
+ID списка, на который ссылается колонка. А при восстановлении из шаблона, список получает уникальный ID.&lt;/p&gt;
+
+&lt;p&gt;Чтобы решить проблему с переноcом воспользуемся: &lt;a href=&#34;http://download.virtosoftware.com/utils/Virto.BackupAndRecovery.Cmd.zip&#34;&gt;Virto Backup &amp;amp; Recovery Tool&lt;/a&gt;&lt;br /&gt;
+ Это командная утилита, которая позволяет сохранять/восстанавивать данные в SharePoint Online.&lt;/p&gt;
+
+&lt;p&gt;Для примера я создал два списка: &lt;strong&gt;Test_List&lt;/strong&gt; и &lt;strong&gt;Test_List_2&lt;/strong&gt;. В список Test_List добавлены два поля:&lt;br /&gt;
+ - Person (тип Person or Group)&lt;br /&gt;
+ - MyLookup (тип Lookup) - ссылается на поле Title из списка Test_List_2&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/test_list.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;По умолчанию &lt;strong&gt;Virto Backup &amp;amp; Recovery&lt;/strong&gt; сохраняет в backup большое кол-во информации (пользователи, списки, права, группы и т.д.)&lt;br /&gt;
+Т.к. нам необходимо перенести только два списка, потребуется создать конфигурационный файл.&lt;/p&gt;
+
+&lt;p&gt;Находим в папке с утилитой (virtobr.exe) файл &lt;strong&gt;Config.xml&lt;/strong&gt;. И копируем его с новым названием, например &lt;strong&gt;TestConfig.xml&lt;/strong&gt;.&lt;br /&gt;
+Открываем TestConfig.xml в любом текстовом редакторе (я использую &lt;a href=&#34;https://code.visualstudio.com&#34;&gt;VS Code&lt;/a&gt;)&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/testconfig_before.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;TestConfig.xml до изменений.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Для нашего примера заменим все значения &lt;strong&gt;true&lt;/strong&gt; на &lt;strong&gt;false&lt;/strong&gt;, за исключением &lt;strong&gt;SiteUsers&lt;/strong&gt; и &lt;strong&gt;WebLists&lt;/strong&gt;.&lt;br /&gt;
+Параметр SiteUsers необходим для того, чтобы утилита смогла правильно перенести пользователей (либо установить соответствие между ними по User Login).&lt;br /&gt;
+А WebLists - для того, чтобы были сохранены списки.&lt;br /&gt;
+Так как нам не требуется сохранять все списки, а только два (Test_List и Test_List_2), добавим информацию об этом в наш конфигурационный файл.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;IncludeFilter&amp;gt;
+      &amp;lt;Webs&amp;gt;
+        &amp;lt;WebBackupConfig&amp;gt;
+          &amp;lt;ServerRelativeUrl&amp;gt;/sites/b&amp;lt;/ServerRelativeUrl&amp;gt;
+          &amp;lt;Lists&amp;gt;
+            &amp;lt;ListBackupConfig&amp;gt;
+              &amp;lt;Title&amp;gt;Test_List&amp;lt;/Title&amp;gt;
+            &amp;lt;/ListBackupConfig&amp;gt;
+            &amp;lt;ListBackupConfig&amp;gt;
+              &amp;lt;Title&amp;gt;Test_List_2&amp;lt;/Title&amp;gt;
+            &amp;lt;/ListBackupConfig&amp;gt;
+          &amp;lt;/Lists&amp;gt;
+        &amp;lt;/WebBackupConfig&amp;gt;
+      &amp;lt;/Webs&amp;gt;
+    &amp;lt;/IncludeFilter&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;ServerRelativeUrl&lt;/strong&gt; - относительный адрес сайта, на котором находятся списки.&lt;br /&gt;
+Ниже примеры значений:&lt;br /&gt;
+&lt;a href=&#34;https://testportal.sharepoint.com&#34;&gt;https://testportal.sharepoint.com&lt;/a&gt;, значение &lt;strong&gt;/&lt;/strong&gt; (главный сайт)&lt;br /&gt;
+&lt;a href=&#34;https://testportal.sharepoint.com/subsite&#34;&gt;https://testportal.sharepoint.com/subsite&lt;/a&gt;, значение &lt;strong&gt;/subsite&lt;/strong&gt; (подсайт)
+&lt;a href=&#34;https://testportal.sharepoint.com/sites/testsite&#34;&gt;https://testportal.sharepoint.com/sites/testsite&lt;/a&gt;, значение &lt;strong&gt;/sites/testsite&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Итоговое содержимое xml-файла TestConfig.xml:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;
+&amp;lt;GlobalOptions xmlns:xsd=&amp;quot;http://www.w3.org/2001/XMLSchema&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;&amp;gt;
+  &amp;lt;BackupConfig&amp;gt;
+    &amp;lt;Recursive&amp;gt;false&amp;lt;/Recursive&amp;gt;
+    &amp;lt;SiteGroups&amp;gt;false&amp;lt;/SiteGroups&amp;gt;
+    &amp;lt;SiteOwners&amp;gt;false&amp;lt;/SiteOwners&amp;gt;
+    &amp;lt;SiteUsers&amp;gt;true&amp;lt;/SiteUsers&amp;gt;
+    &amp;lt;WebContentTypes&amp;gt;false&amp;lt;/WebContentTypes&amp;gt;
+    &amp;lt;WebFields&amp;gt;false&amp;lt;/WebFields&amp;gt;
+    &amp;lt;WebLists&amp;gt;true&amp;lt;/WebLists&amp;gt;
+    &amp;lt;WebRoleDefinition&amp;gt;false&amp;lt;/WebRoleDefinition&amp;gt;
+    &amp;lt;WebRoleAssignments&amp;gt;false&amp;lt;/WebRoleAssignments&amp;gt;
+    &amp;lt;IncludeFilter&amp;gt;
+      &amp;lt;Webs&amp;gt;
+        &amp;lt;WebBackupConfig&amp;gt;
+          &amp;lt;ServerRelativeUrl&amp;gt;/sites/b&amp;lt;/ServerRelativeUrl&amp;gt;
+          &amp;lt;Lists&amp;gt;
+            &amp;lt;ListBackupConfig&amp;gt;
+              &amp;lt;Title&amp;gt;Test_List&amp;lt;/Title&amp;gt;
+            &amp;lt;/ListBackupConfig&amp;gt;
+            &amp;lt;ListBackupConfig&amp;gt;
+              &amp;lt;Title&amp;gt;Test_List_2&amp;lt;/Title&amp;gt;
+            &amp;lt;/ListBackupConfig&amp;gt;
+          &amp;lt;/Lists&amp;gt;
+        &amp;lt;/WebBackupConfig&amp;gt;
+      &amp;lt;/Webs&amp;gt;
+    &amp;lt;/IncludeFilter&amp;gt;
+  &amp;lt;/BackupConfig&amp;gt;
+  &amp;lt;RestoreConfig&amp;gt;
+  &amp;lt;/RestoreConfig&amp;gt;
+&amp;lt;/GlobalOptions&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Теперь запускаем cmd.exe (win -&amp;gt; cmd.exe), и переходим в папку с утилитой &lt;strong&gt;Virto Backup &amp;amp; Recovery&lt;/strong&gt;&lt;br /&gt;
+(В VS Code можно нажать &lt;strong&gt;F1&lt;/strong&gt;, ввести &lt;strong&gt;Create new intergrated terminal&lt;/strong&gt;, нажать enter)&lt;/p&gt;
+
+&lt;p&gt;Запускаем &lt;strong&gt;virtobr.exe&lt;/strong&gt; с параметрами:&lt;br /&gt;
+virtobr.exe -o backup -s &lt;a href=&#34;https://testportal.sharepoint.com/sites/b&#34;&gt;https://testportal.sharepoint.com/sites/b&lt;/a&gt; -d c:\TestBackup -u mylogin@testportal.com -p MyP@$sWoRD1 &lt;code&gt;--&lt;/code&gt;ConfigPath TestConfig.xml&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;-o&lt;/strong&gt; : тип выполняемой операции (backup,recovery)&lt;br /&gt;
+&lt;strong&gt;-s&lt;/strong&gt; : адрес сайта (либо папки, для операции recovery)&lt;br /&gt;
+&lt;strong&gt;-d&lt;/strong&gt; : адрес папки (сайта, для операции recovery), в которую будет сохранён backup (папка будет создана автоматически и к ней будет добавлен TimeStamp (например TestBackup&lt;strong&gt;_201608251011&lt;/strong&gt;))&lt;br /&gt;
+&lt;strong&gt;-u&lt;/strong&gt; : логин пользователя, для подключения к SharePoint&lt;br /&gt;
+&lt;strong&gt;-p&lt;/strong&gt; : пароль пользователя, для подключения к SharePoint&lt;br /&gt;
+&lt;strong&gt;&lt;code&gt;--&lt;/code&gt;ConfigPath&lt;/strong&gt; : название конфигурационного файла (если не указать, будет использоваться стандартный Config.xml)&lt;/p&gt;
+
+&lt;p&gt;В результате выполнения команды будет создана папка (вида TestBackup&lt;strong&gt;_201608251011&lt;/strong&gt;), в которой будут файлы
+для созданного backup.&lt;/p&gt;
+
+&lt;p&gt;Для того, чтобы восстановить (перенести) сохранённые списки, потребуется запустить утилиту ещё раз, с небольшими изменениями в параметрах:&lt;br /&gt;
+virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &amp;ldquo;&lt;a href=&#34;https://testportal.sharepoint.com/sites/c&amp;quot;&#34;&gt;https://testportal.sharepoint.com/sites/c&amp;quot;&lt;/a&gt; -u mylogin@testportal.com -p MyP@$sWoRD1&lt;/p&gt;
+
+&lt;p&gt;В качестве операции (-o) указываем &lt;strong&gt;recovery&lt;/strong&gt;, источником (-s) теперь служит адрес папки с backup, а назначением (-d) - адрес другой коллекции сайтов.&lt;br /&gt;
+Указывать конфигурационный файл не требуется.&lt;/p&gt;
+
+&lt;p&gt;После того, как восстановление будет выполнено, проверим результат:
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/test_list_recovery.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Как видим, у нас появился список с элементами, в которых восстановлены поля типа Lookup и Person.&lt;/p&gt;
+</description>
     </item>
     
   </channel>
