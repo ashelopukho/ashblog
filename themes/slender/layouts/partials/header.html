@@ -21,7 +21,7 @@
             {{ if eq .URL "/" }}
                 {{ .Site.Title }}
             {{ else }}
-                {{ .Title }} &middot; {{ .Site.Title }}
+                {{lower .Title }} &middot; {{ .Site.Title }}
             {{ end }}
         </title>
     </head>

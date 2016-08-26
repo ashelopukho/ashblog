@@ -6,6 +6,7 @@ MetaDataFormat = "toml"
 theme = "slender"
 paginate = 3
 PaginatePath = "/"
+pluralizelisttitles = false
 
 [author]
     name = "alexander"
