@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="SP.Dev: Генерация тестовых данных. Создание элементов в списке. &middot; .ash ">
+        <meta property="og:site_name" content=".ash"/>
+        <meta property="og:description" content="">
+        <meta property="og:url" content="http://ashblog.ru/sp/list-fill-test-data/" />
+        <meta property="og:locale" content="ru-RU">
+        <meta name="author" content="alexander">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="generator" content="Hugo 0.16" />
+        <link rel="icon" href="http://ashblog.ru/assets/favicon.ico" type="image/x-icon"> 
+        <link rel="stylesheet" href="http://ashblog.ru/css/slender-base.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/slender-color-schemes.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/font-awesome-4.5.0.min.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/highlight-9.0.0-default.min.css">
+        <title>
+            
+                SP.Dev: Генерация тестовых данных. Создание элементов в списке. &middot; .ash
+            
+        </title>
+    </head>
+    <body class="color-scheme-white">
+        <div class="container">
+            <header>
+                <nav>
+                    <ul><li><a href="http://ashblog.ru/">.дом</a></li><li><a href="http://ashblog.ru/sp/">.sp</a></li><li><a href="http://ashblog.ru/about/">.я</a></li></ul>
+                </nav>
+                
+                    <div style="background-color:pink;width:200px;margin: 0 auto;">
+                    <h1 class="brand"><a style="text-decoration:none;" 
+                            href="http://ashblog.ru/">.ash</a></h1>
+                       </div>
+                    <aside>
+                        <p>SP.Dev: Генерация тестовых данных. Создание элементов в списке.</p>
+                    </aside>
+                
+            </header>
+<article class="article-content">
+    <p>Создание тестовых данных в SharePoint - одна из тех задач, которая периодически возникает во время:
+разработки, тестирования, демонстрации портала.
+Сегодня рассмтрим как можно быстро создать список, заполненный случайными данными.</p>
+
+<p>Для этого нам понадобится nuget package: <a href="https://www.nuget.org/packages/SPS.SPRandom.Core/">SPS.SPRandom.Core</a><br />
+Проект пока в статусе Alpha, однако для решения некоторых задач уже может использоваться.<br />
+Для примера, я создал проект в Visual Studio - Console Program.
+В &ldquo;Package Manager Console&rdquo; пишем команду:<br />
+<strong>Install-Package SPS.SPRandom.Core</strong></p>
+
+<p>Заменим код в файла Program.cs на следующий:</p>
+
+<pre><code class="language-c#">using OfficeDevPnP.Core;
+using SPS.SPRandom.Core;
+using System.Configuration;
+
+namespace SPConsole
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            AuthenticationManager m = new AuthenticationManager();
+
+            var siteUrl = ConfigurationManager.AppSettings[&quot;TestSiteUrl&quot;];
+            var userLogin = ConfigurationManager.AppSettings[&quot;TestUserLogin&quot;];
+            var userPassword = ConfigurationManager.AppSettings[&quot;TestUserPassword&quot;];
+
+            var listName = &quot;MyTestList&quot;;
+
+            using (var context = m.GetSharePointOnlineAuthenticatedContextTenant(siteUrl, userLogin, userPassword))
+            {
+                //init generator with current sp context
+                SPRandomGenerator spGen = new SPRandomGenerator(context);
+
+                //create test list (generic type).
+                var testList = spGen.CreateList(context.Web, listName, onlyGenericListBaseType: true);
+
+                //add fields for testList 
+                var fieldInternaNames = spGen.CreateFieldsOfSupportedTypes(testList, addPrefixBeforeFieldName: true);
+
+                //create 50 items with random data
+                spGen.FillListWithRandomData(testList, 50);
+
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>Итак, сначала мы создаём контекст для подключения к SharePoint Online.<br />
+Затем инициализируем генератор <strong>SPRandomGenerator</strong>.<br />
+Создаём список <strong>CreateList</strong>. Последний параметр указывает, что создать нужно именно список (Generic List). В противном случае герератор может создать либо список, либо библиотеку (для создания библиотеки есть отдeльный метод <strong>CreateLibrary</strong>).</p>
+
+<p>Следующая строка кода вызывает метод <strong>CreateFieldsOfSupportedTypes</strong>, для того, чтобы создать в списке колонки всех поддерживаемых типов<br />
+<em>(на момент написания статьи: Integer, Text, Note, DateTime, Choice, Lookup, Boolean, Number, Currency, URL, MultiChoice,.User)</em><br />
+Параметр <strong>addPrefixBeforeFieldName</strong> указывает, что к имени колонки будет добавлено название типа колонки. Например: <strong>Text_</strong>DIaxD</p>
+
+<p>В строке <strong>spGen.FillListWithRandomData(testList, 50);</strong> - вызывается код для создания 50 элементов, которые будут заполнены случайными данными.
+Выполним код и посмотрим результат:</p>
+
+
+<figure >
+    
+        <img src="/images/spgen_50_items.png" />
+    
+    
+    <figcaption>
+        <h4>Созданный список с элементами.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>Проект пока в самом &ldquo;зачаточном&rdquo; варианте.<br />
+Код здесь: <a href="https://biogenez.github.io/SPS.SPRandom/">https://biogenez.github.io/SPS.SPRandom/</a></p>
+
+</article>
+        </div>
+        <footer>
+            <p>-</p>
+        </footer>
+        <script src="http://ashblog.ru/js/highlight-9.0.0.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-50925053-3']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+        
+    </body>
+</html>

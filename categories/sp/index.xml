@@ -6,8 +6,94 @@
     <description>Recent content in Sp on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
-    <lastBuildDate>Wed, 24 Aug 2016 15:47:25 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Aug 2016 09:06:04 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/categories/sp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SP.Dev: Генерация тестовых данных. Создание элементов в списке.</title>
+      <link>http://ashblog.ru/sp/list-fill-test-data/</link>
+      <pubDate>Fri, 26 Aug 2016 09:06:04 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/sp/list-fill-test-data/</guid>
+      <description>&lt;p&gt;Создание тестовых данных в SharePoint - одна из тех задач, которая периодически возникает во время:
+разработки, тестирования, демонстрации портала.
+Сегодня рассмтрим как можно быстро создать список, заполненный случайными данными.&lt;/p&gt;
+
+&lt;p&gt;Для этого нам понадобится nuget package: &lt;a href=&#34;https://www.nuget.org/packages/SPS.SPRandom.Core/&#34;&gt;SPS.SPRandom.Core&lt;/a&gt;&lt;br /&gt;
+Проект пока в статусе Alpha, однако для решения некоторых задач уже может использоваться.&lt;br /&gt;
+Для примера, я создал проект в Visual Studio - Console Program.
+В &amp;ldquo;Package Manager Console&amp;rdquo; пишем команду:&lt;br /&gt;
+&lt;strong&gt;Install-Package SPS.SPRandom.Core&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Заменим код в файла Program.cs на следующий:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;using OfficeDevPnP.Core;
+using SPS.SPRandom.Core;
+using System.Configuration;
+
+namespace SPConsole
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            AuthenticationManager m = new AuthenticationManager();
+
+            var siteUrl = ConfigurationManager.AppSettings[&amp;quot;TestSiteUrl&amp;quot;];
+            var userLogin = ConfigurationManager.AppSettings[&amp;quot;TestUserLogin&amp;quot;];
+            var userPassword = ConfigurationManager.AppSettings[&amp;quot;TestUserPassword&amp;quot;];
+
+            var listName = &amp;quot;MyTestList&amp;quot;;
+
+            using (var context = m.GetSharePointOnlineAuthenticatedContextTenant(siteUrl, userLogin, userPassword))
+            {
+                //init generator with current sp context
+                SPRandomGenerator spGen = new SPRandomGenerator(context);
+
+                //create test list (generic type).
+                var testList = spGen.CreateList(context.Web, listName, onlyGenericListBaseType: true);
+
+                //add fields for testList 
+                var fieldInternaNames = spGen.CreateFieldsOfSupportedTypes(testList, addPrefixBeforeFieldName: true);
+
+                //create 50 items with random data
+                spGen.FillListWithRandomData(testList, 50);
+
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Итак, сначала мы создаём контекст для подключения к SharePoint Online.&lt;br /&gt;
+Затем инициализируем генератор &lt;strong&gt;SPRandomGenerator&lt;/strong&gt;.&lt;br /&gt;
+Создаём список &lt;strong&gt;CreateList&lt;/strong&gt;. Последний параметр указывает, что создать нужно именно список (Generic List). В противном случае герератор может создать либо список, либо библиотеку (для создания библиотеки есть отдeльный метод &lt;strong&gt;CreateLibrary&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Следующая строка кода вызывает метод &lt;strong&gt;CreateFieldsOfSupportedTypes&lt;/strong&gt;, для того, чтобы создать в списке колонки всех поддерживаемых типов&lt;br /&gt;
+&lt;em&gt;(на момент написания статьи: Integer, Text, Note, DateTime, Choice, Lookup, Boolean, Number, Currency, URL, MultiChoice,.User)&lt;/em&gt;&lt;br /&gt;
+Параметр &lt;strong&gt;addPrefixBeforeFieldName&lt;/strong&gt; указывает, что к имени колонки будет добавлено название типа колонки. Например: &lt;strong&gt;Text_&lt;/strong&gt;DIaxD&lt;/p&gt;
+
+&lt;p&gt;В строке &lt;strong&gt;spGen.FillListWithRandomData(testList, 50);&lt;/strong&gt; - вызывается код для создания 50 элементов, которые будут заполнены случайными данными.
+Выполним код и посмотрим результат:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spgen_50_items.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Созданный список с элементами.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Проект пока в самом &amp;ldquo;зачаточном&amp;rdquo; варианте.&lt;br /&gt;
+Код здесь: &lt;a href=&#34;https://biogenez.github.io/SPS.SPRandom/&#34;&gt;https://biogenez.github.io/SPS.SPRandom/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>SP: Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля)</title>
