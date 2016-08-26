@@ -23,7 +23,7 @@ PaginatePath = "/"
     [[menu.main]]
     identifier = "sp"
     name       = ".sp"
-    url        = "/sp/"
+    url        = "sp/"
     weight     = 1
 
     [[menu.main]]

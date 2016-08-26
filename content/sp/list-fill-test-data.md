@@ -9,7 +9,7 @@ draft = false
 
 Создание тестовых данных в SharePoint - одна из тех задач, которая периодически возникает во время:
 разработки, тестирования, демонстрации портала.
-Сегодня рассмтрим как можно быстро создать список, заполненный случайными данными.
+Сегодня рассмотрим как можно быстро создать список, заполненный случайными данными.
 <!--more-->
 
 Для этого нам понадобится nuget package: [SPS.SPRandom.Core](https://www.nuget.org/packages/SPS.SPRandom.Core/)    
@@ -18,7 +18,7 @@ draft = false
 В "Package Manager Console" пишем команду:   
 **Install-Package SPS.SPRandom.Core** 
 
-Заменим код в файла Program.cs на следующий:
+Заменим код файла Program.cs на следующий:
 
 ```c#
 using OfficeDevPnP.Core;
