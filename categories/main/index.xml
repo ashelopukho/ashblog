@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Main on .ash</title>
+    <link>http://ashblog.ru/categories/main/</link>
+    <description>Recent content in Main on .ash</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-RU</language>
+    <lastBuildDate>Sun, 28 Aug 2016 19:31:41 +0200</lastBuildDate>
+    <atom:link href="http://ashblog.ru/categories/main/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title></title>
+      <link>http://ashblog.ru/post/27082016/</link>
+      <pubDate>Sun, 28 Aug 2016 19:31:41 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/post/27082016/</guid>
+      <description>
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/svetlogorsk-145km.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;145km. Kaliningrad-Svetlogorks-Zelenogradsk-Lesnoe-Kaliningrad&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

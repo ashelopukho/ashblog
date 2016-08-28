@@ -6,8 +6,30 @@
     <description>Recent content on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
-    <lastBuildDate>Fri, 26 Aug 2016 09:06:04 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 28 Aug 2016 19:31:41 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title></title>
+      <link>http://ashblog.ru/post/27082016/</link>
+      <pubDate>Sun, 28 Aug 2016 19:31:41 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/post/27082016/</guid>
+      <description>
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/svetlogorsk-145km.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;145km. Kaliningrad-Svetlogorks-Zelenogradsk-Lesnoe-Kaliningrad&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+</description>
+    </item>
     
     <item>
       <title>SP.Dev: Генерация тестовых данных. Создание элементов в списке.</title>
@@ -361,14 +383,14 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
 &lt;/figure&gt;
 
 
-&lt;h5 id=&#34;о&#34;&gt;.о&lt;/h5&gt;
+&lt;h5 id=&#34;о:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.о&lt;/h5&gt;
 
 &lt;p&gt;.name(alexander)&lt;br /&gt;
 .russia(kaliningrad)&lt;br /&gt;
 .it(c#,js,sharepoint,office365)&lt;br /&gt;
 .sport(running,riding)&lt;/p&gt;
 
-&lt;h5 id=&#34;блог&#34;&gt;.блог&lt;/h5&gt;
+&lt;h5 id=&#34;блог:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.блог&lt;/h5&gt;
 
 &lt;p&gt;.hugo(&lt;a href=&#34;https://gohugo.io&#34;&gt;https://gohugo.io&lt;/a&gt;)&lt;br /&gt;
 .theme(inspired-by-slender)&lt;br /&gt;
