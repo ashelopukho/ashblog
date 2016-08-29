@@ -383,14 +383,14 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
 &lt;/figure&gt;
 
 
-&lt;h5 id=&#34;о:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.о&lt;/h5&gt;
+&lt;h5 id=&#34;о&#34;&gt;.о&lt;/h5&gt;
 
 &lt;p&gt;.name(alexander)&lt;br /&gt;
 .russia(kaliningrad)&lt;br /&gt;
 .it(c#,js,sharepoint,office365)&lt;br /&gt;
 .sport(running,riding)&lt;/p&gt;
 
-&lt;h5 id=&#34;блог:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.блог&lt;/h5&gt;
+&lt;h5 id=&#34;блог&#34;&gt;.блог&lt;/h5&gt;
 
 &lt;p&gt;.hugo(&lt;a href=&#34;https://gohugo.io&#34;&gt;https://gohugo.io&lt;/a&gt;)&lt;br /&gt;
 .theme(inspired-by-slender)&lt;br /&gt;
