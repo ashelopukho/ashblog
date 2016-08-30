@@ -1,5 +1,5 @@
 +++
-categories = ["music"]
+categories = ["main", "music"]
 date = "2016-08-30T19:36:17+02:00"
 description = ""
 keywords = []
