@@ -4,7 +4,7 @@ title = ".ash"
 #uglyurls = true
 MetaDataFormat = "toml"
 theme = "slender"
-paginate = 3
+paginate = 5
 PaginatePath = "/"
 pluralizelisttitles = false
 
