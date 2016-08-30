@@ -6,8 +6,21 @@
     <description>Recent content on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
-    <lastBuildDate>Sun, 28 Aug 2016 19:31:41 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 30 Aug 2016 19:36:17 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A Lovers Complaint</title>
+      <link>http://ashblog.ru/post/max-richter/</link>
+      <pubDate>Tue, 30 Aug 2016 19:36:17 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/post/max-richter/</guid>
+      <description>&lt;iframe frameborder=&#34;0&#34; 
+    style=&#34;border:none;width:640px;height:100px;&#34; width=&#34;640&#34; 
+    height=&#34;100&#34; 
+    src=&#34;https://music.yandex.ru/iframe/#track/2812922/2413918/hide/cover/&#34;&gt;Слушайте &lt;a href=&#39;https://music.yandex.ru/album/2413918/track/2812922&#39;&gt;A Lovers Complaint&lt;/a&gt; — &lt;a href=&#39;https://music.yandex.ru/artist/201862&#39;&gt;Max Richter&lt;/a&gt; на Яндекс.Музыке&lt;/iframe&gt;
+</description>
+    </item>
     
     <item>
       <title></title>
@@ -383,14 +396,14 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
 &lt;/figure&gt;
 
 
-&lt;h5 id=&#34;о&#34;&gt;.о&lt;/h5&gt;
+&lt;h5 id=&#34;о:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.о&lt;/h5&gt;
 
 &lt;p&gt;.name(alexander)&lt;br /&gt;
 .russia(kaliningrad)&lt;br /&gt;
 .it(c#,js,sharepoint,office365)&lt;br /&gt;
 .sport(running,riding)&lt;/p&gt;
 
-&lt;h5 id=&#34;блог&#34;&gt;.блог&lt;/h5&gt;
+&lt;h5 id=&#34;блог:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.блог&lt;/h5&gt;
 
 &lt;p&gt;.hugo(&lt;a href=&#34;https://gohugo.io&#34;&gt;https://gohugo.io&lt;/a&gt;)&lt;br /&gt;
 .theme(inspired-by-slender)&lt;br /&gt;
