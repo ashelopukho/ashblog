@@ -15,11 +15,303 @@
       <pubDate>Tue, 30 Aug 2016 19:36:17 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/max-richter/</guid>
-      <description>&lt;iframe frameborder=&#34;0&#34; 
+      <description>&lt;iframe frameborder=&#34;0&#34;  
     style=&#34;border:none;max-width:640px;height:100px;width:100%;&#34;  
     height=&#34;100&#34;  
     src=&#34;https://music.yandex.ru/iframe/#track/2812922/2413918/hide/cover/&#34;&gt;Слушайте &lt;a href=&#39;https://music.yandex.ru/album/2413918/track/2812922&#39;&gt;A Lovers Complaint&lt;/a&gt; — &lt;a href=&#39;https://music.yandex.ru/artist/201862&#39;&gt;Max Richter&lt;/a&gt; на Яндекс.Музыке&lt;/iframe&gt;
     
+</description>
+    </item>
+    
+    <item>
+      <title>SP Online: Debug Remote Event Receivers &#43; ngrok</title>
+      <link>http://ashblog.ru/sp/debug-remote-event-receivers/</link>
+      <pubDate>Mon, 29 Aug 2016 12:08:21 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/sp/debug-remote-event-receivers/</guid>
+      <description>
+
+&lt;p&gt;Обычно отладка Remote Event Receivers в SharePoint Online выполняется с помощью Service Bus.
+Я писал подробно про это &lt;a href=&#34;http://blog.virtosoftware.com/2014/12/creating-and-debugging-of-remote-event.html&#34;&gt;здесь&lt;/a&gt; и &lt;a href=&#34;http://blog.virtosoftware.com/2015/01/adding-remote-event-receivers-to-list.html&#34;&gt;здесь&lt;/a&gt;.
+Сегодня мы рассмотрим другой (более простой) путь решения этой задачи.&lt;/p&gt;
+
+&lt;p&gt;Если коротко, то всё что нам нужно - это использовать &lt;strong&gt;&lt;a href=&#34;https://ngrok.com/&#34;&gt;ngrok&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+На странице продукта коротко и ёмко описано его предназначение: ngrok - secure tunnels to localhost.&lt;/p&gt;
+
+&lt;p&gt;Первым делом качаем &lt;a href=&#34;https://ngrok.com/download&#34;&gt;ngrok&lt;/a&gt;&lt;br /&gt;
+Распаковываем архив в любую директорию.&lt;br /&gt;
+Открываем Visual Studio и создаём проект SharePoint Add-In (Provider-Hosted).&lt;br /&gt;
+Кликаем мышкой по имени add-in project (не web) -&amp;gt; нажимем F4.&lt;br /&gt;
+Выбираем &lt;strong&gt;true&lt;/strong&gt; для параметра &lt;strong&gt;Handle add-in installed&lt;/strong&gt;&lt;br /&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-addin-installed-rer.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Handle add-in installed&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;В результате предыдущего действия будет создан &lt;strong&gt;.svc&lt;/strong&gt; сервис, который будет вызываться после того,
+как наше решение будет установлено на портале.
+Этот сервис является примером удалённого обработчика данных (Remote Event Receiver).&lt;/p&gt;
+
+&lt;p&gt;Если на данном этапе нажать F5, то мы получим предупреждение от Visual Studio, о том, мы мы не сможем
+отлаживать Remote Event Receivers, т.к. для этого необходимо настроить Service Bus.&lt;br /&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-addin-servicebus-msg.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Предупреждение: MS Service Bus Connection&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;В процессе отладки адресом нашего приложения будет localhost, который недоступен извне.
+Именно поэтому в Visual Studio появилось сообщение о настройке Service Bus.&lt;/p&gt;
+
+&lt;p&gt;ngrok позволит решить нам эту проблему.&lt;br /&gt;
+Итак, открываем папку с &lt;strong&gt;ngrok.exe&lt;/strong&gt; и запускаем команду&lt;br /&gt;
+&lt;strong&gt;ngrok http -host-header=&amp;ldquo;localhost:[port]&amp;rdquo; [port]&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;программу-ngrok-не-закрываем-туннель-работает-пока-работает-ngrok&#34;&gt;Программу ngrok не закрываем (туннель работает, пока работает ngrok)&lt;/h4&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/ngrok-run.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;strong&gt;[port]&lt;/strong&gt; заменяем на порт, который используется IIS Express для доступа к нашем сайту на localhost.
+Порт можно получить выбрав Web-проект и нажав F4.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-addin-localhost-port.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Получаем порт от localhost (для http)&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;После запуска ngrok мы получили временный адрес, по которому можно обращаться извне к localhost.&lt;br /&gt;
+Нажимаем правой кнопкой мыши по web-проекту, выбираем &lt;strong&gt;Set as StartUp Project&lt;/strong&gt;. Жмём &lt;strong&gt;F5&lt;/strong&gt;&lt;br /&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/set-as-startup-project.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Set as StartUp Project&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Открываем любой браузер и вводим адрес туннеля (используем https, &lt;a href=&#34;https://e1e1e1e1e.ngrok.io&#34;&gt;https://e1e1e1e1e.ngrok.io&lt;/a&gt;)
+В результате получим окно вида:
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/ngrok-access-ok.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Отлично, наш компьютер доступен извне. Теперь любой желающий может получить доступ к нашему
+сайту, зная ngrok-адрес. На картинке выше мы видим стандартное сообщение об ошибке, которое
+появилось в SharePointContextFilter.&lt;/p&gt;
+
+&lt;p&gt;Попробуем запустить add-in в режиме отладки. Для этого вернём тип запуска проекта.&lt;br /&gt;
+Выбираем в Solution Explorer наше решение, клик правой кнопкой мыши, выбираем &lt;strong&gt;Set StartUp Projects&amp;hellip;&lt;/strong&gt;&lt;br /&gt;
+Выбираем &lt;strong&gt;Multiple startup projects&lt;/strong&gt;, нажимаем &lt;strong&gt;OK&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Теперь необходимо открыть и изменить файл &lt;strong&gt;AppManifest.xml&lt;/strong&gt;, для того, чтобы сменить адрес, по которому будет происходить
+обращение к нашему сервису. Выбираем файл в Solution Explorer -&amp;gt; жмём F7.&lt;br /&gt;
+Заменяем значение элемента &lt;strong&gt;InstallEventEndpoint&lt;/strong&gt; на ngrok-адрес туннеля.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/ngrok-rer-address.PNG&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Открываем файл с кодом сервиса &lt;strong&gt;AppEventReceiver.svc.cs&lt;/strong&gt;, ставим breakpoint в первойм строчке метода &lt;strong&gt;ProcessEvent&lt;/strong&gt;
+Запускаем отладку: &lt;strong&gt;F5&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;&amp;hellip;ждём&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Ура! Breakpoint сработал.&lt;br /&gt;
+Однако, если выполнить шаги дальше, то мы увидим, что &lt;strong&gt;clientContext&lt;/strong&gt; равен &lt;strong&gt;null&lt;/strong&gt;. Причина в том, что в
+результате запуска в режиме отладки, Visual Studio прописывает localhost адрес в качестве remote endpoint
+для нашего приложения.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/ngrok-endpoint-problem.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Почти получилось...&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Для того, чтобы обойти эту проблему зарегистриуем наш add-in вручную.
+Октроем страницу: [dev_site_url]/_layouts/appregnew.aspx,&lt;br /&gt;
+Где [dev_site_url] - адрес сайта, на котором будет тестироваться приложение&lt;br /&gt;
+(например: &lt;a href=&#34;https://testportal.sharepoint.com/sites/dev/_layouts/appregnew.aspx&#34;&gt;https://testportal.sharepoint.com/sites/dev/_layouts/appregnew.aspx&lt;/a&gt;)&lt;br /&gt;
+Нажимаем Generate для создания Client ID и Client Secret. В качестве доменного App Domain и Redirect Url указываем адрес
+полученный при запуске ngrok. После этого жмём кнопку Save и полученную информацию сохраняем куда-нибудь в текстовый файл
+(чтобы не потерять Client Secret).&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-reg-addin.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Вернёмся в Visual Studio, выбираем web-проект, и устанавливаем для него &lt;strong&gt;Set as StartUp Project&lt;/strong&gt;. Открываем файл web.config
+и заменяем в appSettings ClientId и ClientSecret на сгенерированные значения.
+Далее нажимаем правой кнопкой по add-in проекту и выбираем &lt;strong&gt;Publish&amp;hellip;&lt;/strong&gt;.&lt;br /&gt;
+В &lt;strong&gt;Current profile:&lt;/strong&gt; выбираем &lt;strong&gt;New..&lt;/strong&gt;. Затем &lt;strong&gt;Create new profile&lt;/strong&gt;.
+Вводим любое слово для Profile Name (например, spNgrokProfile). Нажимаем кнопку &lt;strong&gt;Next&lt;/strong&gt;.
+Далее вводим Client ID и Client Secret, полученные на странице &lt;strong&gt;appregnew.aspx&lt;/strong&gt;.
+И жмём кнопку &lt;strong&gt;Finish&lt;/strong&gt;. После этого мы можем собрать add-in: нажимаем &lt;strong&gt;Package the add-in&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;В открывшемся окне вводим https адрес ngrok-туннелля, и проверяем Client ID. Далее &lt;strong&gt;Finish&lt;/strong&gt;.
+После сборки add-in откроется папка с app-файлом. Далее открываем в браузере dev-сайт -&amp;gt; Site Contents -&amp;gt;
+открываем библиотеку &lt;strong&gt;App Packages&lt;/strong&gt;. Нажимаем кнопку Upload и загружаем app-файл.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-apppackages-lib.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Возвращаемся в Visual Studio, нажимаем &lt;strong&gt;F5&lt;/strong&gt; (не забываем проверить, что web-проект выбран в качестве StartUp Project).
+Итак, к этому моменту у нас залит add-in в App Packages, запущен web-проект в режиме отладки,
+запущен ngrok, и установлен breakpoint в Event Receiver (метод ProcessEvent).
+Осталось установить Add-In и убедиться, что breakpoint сработает. Для на dev-сайте переходим в список
+&lt;strong&gt;Apps in Testing&lt;/strong&gt; -&amp;gt; нажимаем на &lt;strong&gt;new app to deploy&lt;/strong&gt; -&amp;gt; в модальном окне выбираем package: spNgrok -&amp;gt;
+адрес (Deploy app to) не меняем -&amp;gt; нажимаем &lt;strong&gt;Deploy&lt;/strong&gt; -&amp;gt; далее &lt;strong&gt;Trust It&lt;/strong&gt;.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-deploy-addin.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Вернёмся в &lt;strong&gt;Site Contents&lt;/strong&gt; и увидим, что наше приложение устанавливается.
+Установка может занять несколько минут (даже для пустого add-in, и ), поэтому не удивляемся,
+что наш breakpoint ещё не сработал. Ждём&amp;hellip;&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-addin-install-inprogress.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;In Progress&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;И вот спустя несколько минут срабатывает breakpoint:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-fire-breakpoint.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Breakpoint&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Нажимаем &lt;strong&gt;F5&lt;/strong&gt; для прололжения выполнения работы программы, и ловим исключение: &lt;strong&gt;AudienceUriValidationFailedException&lt;/strong&gt;&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-audience-exception.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Audience Exception&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;В ошибке говорится, что-то про localhost. Ок. Для того, чтобы решить эту проблему нам необходимо выполнить
+последний шаг. Открываем web.config нашего web-проекта и добавляем в &lt;strong&gt;appSettings&lt;/strong&gt; следующую строчку:&lt;br /&gt;
+&lt;strong&gt;&lt;code&gt;&amp;lt;add key=&amp;quot;HostedAppHostNameOverride&amp;quot; value=&amp;quot;e1e1e1e1e.ngrok.io;localhost&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/strong&gt;
+(Замените &lt;strong&gt;e1e1e1e1e.ngrok.io&lt;/strong&gt; на ваш адрес ngrok-туннеля без https префикса)&lt;br /&gt;
+При сохранении web.config, Visual Studio сообщит, что необходимо выйти из debug-режима. Нажимаем OK.
+Снова нажимаем &lt;strong&gt;F5&lt;/strong&gt;. Возвращаемся в Site Contents и видим, что при установке возникла ошибка:
+&lt;strong&gt;Sorry, something went wrong with adding the app. Click to retry.&lt;/strong&gt;&lt;br /&gt;
+Нажимаем &lt;strong&gt;Click to retry&lt;/strong&gt; и ждём срабатывание breakpoint.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/spngrok-final-breakpoint-ok.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Breakpoint сработал. ClientContext не равен null&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Цель достигнута. ngrok отлично подходит для отладки Remote Event Receivers списков и элементов, webhooks, httpsend action.
+Так же можно использовать его для демонстрации работы add-in без развёртывания приложения на внешний хостинг.
+Минусом является то, что в бесплатной версии ngrok-туннель живёт, пока не закрыто приложение ngrok.
+В платной версии можно создавать постоянные адреса.&lt;/p&gt;
 </description>
     </item>
     
@@ -397,14 +689,14 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
 &lt;/figure&gt;
 
 
-&lt;h5 id=&#34;о:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.о&lt;/h5&gt;
+&lt;h5 id=&#34;о&#34;&gt;.о&lt;/h5&gt;
 
 &lt;p&gt;.name(alexander)&lt;br /&gt;
 .russia(kaliningrad)&lt;br /&gt;
 .it(c#,js,sharepoint,office365)&lt;br /&gt;
 .sport(running,riding)&lt;/p&gt;
 
-&lt;h5 id=&#34;блог:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.блог&lt;/h5&gt;
+&lt;h5 id=&#34;блог&#34;&gt;.блог&lt;/h5&gt;
 
 &lt;p&gt;.hugo(&lt;a href=&#34;https://gohugo.io&#34;&gt;https://gohugo.io&lt;/a&gt;)&lt;br /&gt;
 .theme(inspired-by-slender)&lt;br /&gt;
