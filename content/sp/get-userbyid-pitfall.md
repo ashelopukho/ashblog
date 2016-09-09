@@ -6,7 +6,6 @@ keywords = []
 title = "SP.CSOM.Pitfalls: UserCollection"
 +++
 
-
 Что будет выведено на экран после выполнения следующего кода?
 <!--more-->
 
