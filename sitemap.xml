@@ -3,7 +3,13 @@
   
   <url>
     <loc>http://ashblog.ru/</loc>
-    <lastmod>2016-08-30T19:36:17+02:00</lastmod>
+    <lastmod>2016-09-09T08:25:58+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/sp/get-userbyid-pitfall/</loc>
+    <lastmod>2016-09-09T08:25:58+02:00</lastmod>
   </url>
   
   <url>

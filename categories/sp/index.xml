@@ -6,8 +6,54 @@
     <description>Recent content in Sp on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 29 Aug 2016 12:08:21 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 09 Sep 2016 08:25:58 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/categories/sp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SP.CSOM.Pitfalls: UserCollection</title>
+      <link>http://ashblog.ru/sp/get-userbyid-pitfall/</link>
+      <pubDate>Fri, 09 Sep 2016 08:25:58 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/sp/get-userbyid-pitfall/</guid>
+      <description>&lt;p&gt;Что будет выведено на экран после выполнения следующего кода?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;var byEmail = Context.Web.SiteUsers.GetByEmail(&amp;quot;user1@ashblog.ru&amp;quot;);
+var byID = Context.Web.SiteUsers.GetById(10); 
+
+Context.Load(byEmail, u =&amp;gt; u.Title);
+Context.Load(byID, u =&amp;gt; u.Title);
+Context.ExecuteQuery();
+
+var byEmail2 = Context.Web.SiteUsers.GetByEmail(&amp;quot;user1@ashblog.ru&amp;quot;);
+var byID2 = Context.Web.SiteUsers.GetById(10);
+
+var titleByEmail2 = byEmail2.Title;
+var titleByID2 = byID2.Title;
+
+Console.WriteLine(email);
+Console.WriteLine(byid);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;В первых двух строках мы запрашиваем пользователя по Id и Email.&lt;br /&gt;
+Затем указываем, что необходимо проинициализировать свойство Title для возвращаемого объекта User.
+И выполняем запрос - ExecuteQuery.&lt;br /&gt;
+Если мы попробуем сейчас вывести значение свойства Title для переменных
+byEmail и byID - то увидим два одинаковых значения.&lt;/p&gt;
+
+&lt;p&gt;Следующие две строки идентичны первым двум, за исключением того, что пользователя мы присваиваем другим переменным (byEmail2, byID2).
+Мы не выполняем дополнительный запрос ExecuteQuery(), т.к. ожидаем, что свойство SiteUsers уже проинициализировано.
+Далее присваиваем значение свойства Title переменным titleByEmail2 и titleByID2.
+И выводим значения на экран. Однако при запуске этого кода, мы получим исключение&lt;br /&gt;
+&lt;em&gt;The property or field has not been initialized.&lt;/em&gt;&lt;br /&gt;
+в строке:&lt;br /&gt;
+&lt;em&gt;var titleByID2 = byID2.Title;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Оказывается, что метод GetById не ищет пользователя в проинициализированной коллекции.
+В этом методе всегда создаётся запрос на получение нового значения (пользователя).
+Именно, из-за этого возникло исключение, т.к. для &amp;ldquo;нового&amp;rdquo; пользователя мы не отправляли
+запрос на сервер и не запрашивали свойство Title.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>SP Online: Debug Remote Event Receivers &#43; ngrok</title>
@@ -70,7 +116,7 @@
 Итак, открываем папку с &lt;strong&gt;ngrok.exe&lt;/strong&gt; и запускаем команду&lt;br /&gt;
 &lt;strong&gt;ngrok http -host-header=&amp;ldquo;localhost:[port]&amp;rdquo; [port]&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;программу-ngrok-не-закрываем-туннель-работает-пока-работает-ngrok&#34;&gt;Программу ngrok не закрываем (туннель работает, пока работает ngrok)&lt;/h4&gt;
+&lt;h4 id=&#34;программу-ngrok-не-закрываем-туннель-работает-пока-работает-ngrok:4fd096ac965106c4e57ad3113c9eb263&#34;&gt;Программу ngrok не закрываем (туннель работает, пока работает ngrok)&lt;/h4&gt;
 
 
 &lt;figure &gt;
@@ -280,7 +326,7 @@
 &lt;strong&gt;Sorry, something went wrong with adding the app. Click to retry.&lt;/strong&gt;&lt;br /&gt;
 Нажимаем &lt;strong&gt;Click to retry&lt;/strong&gt; и ждём срабатывание breakpoint.&lt;/p&gt;
 
-
+&lt;p&gt;
 &lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/spngrok-final-breakpoint-ok.png&#34; /&gt;
@@ -292,7 +338,7 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Цель достигнута. ngrok отлично подходит для отладки Remote Event Receivers списков и элементов, webhooks, httpsend action.
 Так же можно использовать его для демонстрации работы add-in без развёртывания приложения на внешний хостинг.

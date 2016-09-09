@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="SP.CSOM.Pitfalls: UserCollection &middot; .ash ">
+        <meta property="og:site_name" content=".ash"/>
+        <meta property="og:description" content="">
+        <meta property="og:url" content="http://ashblog.ru/sp/get-userbyid-pitfall/" />
+        <meta property="og:locale" content="ru-RU">
+        <meta name="author" content="alexander">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="generator" content="Hugo 0.15" />
+        <link rel="icon" href="http://ashblog.ru/assets/favicon.ico" type="image/x-icon"> 
+        <link rel="stylesheet" href="http://ashblog.ru/css/slender-base.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/slender-color-schemes.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/font-awesome-4.5.0.min.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/highlight-9.0.0-default.min.css">
+        <title>
+            
+                sp.csom.pitfalls: usercollection &middot; .ash
+            
+        </title>
+    </head>
+    <body class="color-scheme-white">
+        <div class="container">
+            <header>
+                <nav>
+                    <ul><li><a href="http://ashblog.ru/">.дом</a></li><li><a href="http://ashblog.ru/sp/">.sp</a></li><li><a href="http://ashblog.ru/about/">.я</a></li></ul>
+                </nav>
+                
+                    <div style="background-color:pink;width:200px;margin: 0 auto;">
+                    <h1 class="brand"><a style="text-decoration:none;" 
+                            href="http://ashblog.ru/">.ash</a></h1>
+                       </div>
+                    <aside>
+                        <p>SP.CSOM.Pitfalls: UserCollection</p>
+                    </aside>
+                
+            </header>
+<article class="article-content">
+    <p>Что будет выведено на экран после выполнения следующего кода?</p>
+
+<pre><code class="language-csharp">var byEmail = Context.Web.SiteUsers.GetByEmail(&quot;user1@ashblog.ru&quot;);
+var byID = Context.Web.SiteUsers.GetById(10); 
+
+Context.Load(byEmail, u =&gt; u.Title);
+Context.Load(byID, u =&gt; u.Title);
+Context.ExecuteQuery();
+
+var byEmail2 = Context.Web.SiteUsers.GetByEmail(&quot;user1@ashblog.ru&quot;);
+var byID2 = Context.Web.SiteUsers.GetById(10);
+
+var titleByEmail2 = byEmail2.Title;
+var titleByID2 = byID2.Title;
+
+Console.WriteLine(email);
+Console.WriteLine(byid);
+</code></pre>
+
+<p>В первых двух строках мы запрашиваем пользователя по Id и Email.<br />
+Затем указываем, что необходимо проинициализировать свойство Title для возвращаемого объекта User.
+И выполняем запрос - ExecuteQuery.<br />
+Если мы попробуем сейчас вывести значение свойства Title для переменных
+byEmail и byID - то увидим два одинаковых значения.</p>
+
+<p>Следующие две строки идентичны первым двум, за исключением того, что пользователя мы присваиваем другим переменным (byEmail2, byID2).
+Мы не выполняем дополнительный запрос ExecuteQuery(), т.к. ожидаем, что свойство SiteUsers уже проинициализировано.
+Далее присваиваем значение свойства Title переменным titleByEmail2 и titleByID2.
+И выводим значения на экран. Однако при запуске этого кода, мы получим исключение<br />
+<em>The property or field has not been initialized.</em><br />
+в строке:<br />
+<em>var titleByID2 = byID2.Title;</em></p>
+
+<p>Оказывается, что метод GetById не ищет пользователя в проинициализированной коллекции.
+В этом методе всегда создаётся запрос на получение нового значения (пользователя).
+Именно, из-за этого возникло исключение, т.к. для &ldquo;нового&rdquo; пользователя мы не отправляли
+запрос на сервер и не запрашивали свойство Title.</p>
+
+</article>
+        </div>
+        <footer>
+            <p>-</p>
+        </footer>
+        <script src="http://ashblog.ru/js/highlight-9.0.0.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-50925053-3']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+        
+    </body>
+</html>
