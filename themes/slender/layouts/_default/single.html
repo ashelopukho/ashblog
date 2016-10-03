@@ -1,5 +1,7 @@
 {{ partial "header.html" . }}
 <article class="article-content">
     {{ .Content }}
+    <hr />
+    {{ template "_internal/disqus.html" . }}    
 </article>
 {{ partial "footer.html" . }}

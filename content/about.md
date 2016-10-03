@@ -16,4 +16,4 @@ title = ".я"
 ##### .блог  
 .hugo(https://gohugo.io)  
 .theme(inspired-by-slender)  
-.no(comments)
+.comments(disqus)
