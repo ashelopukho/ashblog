@@ -6,11 +6,36 @@
     <description>Recent content on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
-    <lastBuildDate>Mon, 03 Oct 2016 18:28:49 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Oct 2016 19:46:24 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>01-10-2016</title>
+      <title>09102016</title>
+      <link>http://ashblog.ru/post/09102016/</link>
+      <pubDate>Mon, 10 Oct 2016 19:46:24 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/post/09102016/</guid>
+      <description>
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://ashblog.ru/images/09102016.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Зеленоградск.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Приехать на море, чтобы замёрзнуть за 2 минуты. А затем поехать обратно&amp;hellip;
+Воскресная тренировка Калининград-Зеленоградск-Калининград.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>01102016</title>
       <link>http://ashblog.ru/post/01102016/</link>
       <pubDate>Mon, 03 Oct 2016 18:28:49 +0200</pubDate>
       
@@ -46,7 +71,7 @@
     </item>
     
     <item>
-      <title>24-09-2016</title>
+      <title>24092016</title>
       <link>http://ashblog.ru/post/24092016/</link>
       <pubDate>Sat, 24 Sep 2016 19:41:48 +0200</pubDate>
       
@@ -420,7 +445,7 @@ byEmail и byID - то увидим два одинаковых значения
     </item>
     
     <item>
-      <title></title>
+      <title>27082016</title>
       <link>http://ashblog.ru/post/27082016/</link>
       <pubDate>Sun, 28 Aug 2016 19:31:41 +0200</pubDate>
       
