@@ -11,7 +11,7 @@ title = ".я"
 .name(alexander)  
 .russia(kaliningrad)    
 .it(c#,js,sharepoint,office365)  
-.sport(running,riding)  
+.sport(running,cycling)  
  
 ##### .блог  
 .hugo(https://gohugo.io)  
