@@ -213,7 +213,7 @@ byEmail и byID - то увидим два одинаковых значения
 Итак, открываем папку с &lt;strong&gt;ngrok.exe&lt;/strong&gt; и запускаем команду&lt;br /&gt;
 &lt;strong&gt;ngrok http -host-header=&amp;ldquo;localhost:[port]&amp;rdquo; [port]&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;программу-ngrok-не-закрываем-туннель-работает-пока-работает-ngrok:4fd096ac965106c4e57ad3113c9eb263&#34;&gt;Программу ngrok не закрываем (туннель работает, пока работает ngrok)&lt;/h4&gt;
+&lt;h4 id=&#34;программу-ngrok-не-закрываем-туннель-работает-пока-работает-ngrok&#34;&gt;Программу ngrok не закрываем (туннель работает, пока работает ngrok)&lt;/h4&gt;
 
 
 &lt;figure &gt;
@@ -423,7 +423,7 @@ byEmail и byID - то увидим два одинаковых значения
 &lt;strong&gt;Sorry, something went wrong with adding the app. Click to retry.&lt;/strong&gt;&lt;br /&gt;
 Нажимаем &lt;strong&gt;Click to retry&lt;/strong&gt; и ждём срабатывание breakpoint.&lt;/p&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/spngrok-final-breakpoint-ok.png&#34; /&gt;
@@ -435,7 +435,7 @@ byEmail и byID - то увидим два одинаковых значения
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;Цель достигнута. ngrok отлично подходит для отладки Remote Event Receivers списков и элементов, webhooks, httpsend action.
 Так же можно использовать его для демонстрации работы add-in без развёртывания приложения на внешний хостинг.
@@ -818,14 +818,14 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
 &lt;/figure&gt;
 
 
-&lt;h5 id=&#34;о:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.о&lt;/h5&gt;
+&lt;h5 id=&#34;о&#34;&gt;.о&lt;/h5&gt;
 
 &lt;p&gt;.name(alexander)&lt;br /&gt;
 .russia(kaliningrad)&lt;br /&gt;
 .it(c#,js,sharepoint,office365)&lt;br /&gt;
-.sport(running,riding)&lt;/p&gt;
+.sport(running,cycling)&lt;/p&gt;
 
-&lt;h5 id=&#34;блог:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;.блог&lt;/h5&gt;
+&lt;h5 id=&#34;блог&#34;&gt;.блог&lt;/h5&gt;
 
 &lt;p&gt;.hugo(&lt;a href=&#34;https://gohugo.io&#34;&gt;https://gohugo.io&lt;/a&gt;)&lt;br /&gt;
 .theme(inspired-by-slender)&lt;br /&gt;
