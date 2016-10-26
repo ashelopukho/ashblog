@@ -8,7 +8,7 @@
             <strong>{{ .Date.Format "02-01-2006" }}</strong>
         </p>-->
         {{ .Summary }}
-        {{ if .Truncated }}<a href="{{ .Permalink }}"><p class="article-read-more">.читать</a></p>{{ end }}
+        <a href="{{ .Permalink }}"><p class="article-read-more">...more</a></p>
     </article>
     {{ end }}
     {{ template "_internal/pagination.html" . }}

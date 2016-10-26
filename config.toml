@@ -7,7 +7,7 @@ theme = "slender"
 paginate = 5
 PaginatePath = "/"
 pluralizelisttitles = false
-disqusShortname = "biogenez"
+#disqusShortname = "biogenez"
 
 [author]
     name = "alexander"

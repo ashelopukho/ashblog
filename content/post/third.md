@@ -1,7 +1,7 @@
 +++
 date = "2016-01-09T18:46:53+02:00"
 draft = false
-title = ""
+title = "stone"
 +++
 
 {{< figure src="/images/stone.jpg" title="stone" >}}
