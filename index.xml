@@ -327,7 +327,7 @@ byEmail и byID - то увидим два одинаковых значения
 Итак, открываем папку с &lt;strong&gt;ngrok.exe&lt;/strong&gt; и запускаем команду&lt;br /&gt;
 &lt;strong&gt;ngrok http -host-header=&amp;ldquo;localhost:[port]&amp;rdquo; [port]&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;программу-ngrok-не-закрываем-туннель-работает-пока-работает-ngrok&#34;&gt;Программу ngrok не закрываем (туннель работает, пока работает ngrok)&lt;/h4&gt;
+&lt;h4 id=&#34;программу-ngrok-не-закрываем-туннель-работает-пока-работает-ngrok:4fd096ac965106c4e57ad3113c9eb263&#34;&gt;Программу ngrok не закрываем (туннель работает, пока работает ngrok)&lt;/h4&gt;
 
 
 &lt;figure &gt;
@@ -537,7 +537,7 @@ byEmail и byID - то увидим два одинаковых значения
 &lt;strong&gt;Sorry, something went wrong with adding the app. Click to retry.&lt;/strong&gt;&lt;br /&gt;
 Нажимаем &lt;strong&gt;Click to retry&lt;/strong&gt; и ждём срабатывание breakpoint.&lt;/p&gt;
 
-
+&lt;p&gt;
 &lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/spngrok-final-breakpoint-ok.png&#34; /&gt;
@@ -549,7 +549,7 @@ byEmail и byID - то увидим два одинаковых значения
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Цель достигнута. ngrok отлично подходит для отладки Remote Event Receivers списков и элементов, webhooks, httpsend action.
 Так же можно использовать его для демонстрации работы add-in без развёртывания приложения на внешний хостинг.
