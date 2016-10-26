@@ -158,6 +158,10 @@ article p:empty{
     display: none;
 }
 
+article p:blank{
+    display: none;
+}
+
 article h5 {
     font-family: monospace;
     max-width: 640px;
@@ -195,10 +199,13 @@ article h5 {
 .article-read-more {
     padding-top: 0px;
     padding-bottom: 0px;
+    padding-right: 0px;
     margin-bottom: 0px;
+    margin-right: 0px;
     font-size: 14px;
     background-color: #fff;
     text-align: right;
+
 }
 
 .article-read-more a {
@@ -256,4 +263,8 @@ footer p {
     .article-content {
         margin: 20px;
     }
+}
+
+#article-listing figcaption{
+    display: none;
 }

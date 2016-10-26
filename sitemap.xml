@@ -3,7 +3,12 @@
   
   <url>
     <loc>http://ashblog.ru/</loc>
-    <lastmod>2016-10-10T19:46:24+02:00</lastmod>
+    <lastmod>2016-10-26T14:36:05+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/post/amsterdam1419102016/</loc>
+    <lastmod>2016-10-26T14:36:05+02:00</lastmod>
   </url>
   
   <url>
@@ -62,17 +67,17 @@
   </url>
   
   <url>
-    <loc>http://ashblog.ru/post/first/</loc>
-    <lastmod>2016-01-09T18:46:53+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://ashblog.ru/post/second/</loc>
     <lastmod>2016-01-09T18:46:53+02:00</lastmod>
   </url>
   
   <url>
     <loc>http://ashblog.ru/post/third/</loc>
+    <lastmod>2016-01-09T18:46:53+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/post/first/</loc>
     <lastmod>2016-01-09T18:46:53+02:00</lastmod>
   </url>
   
