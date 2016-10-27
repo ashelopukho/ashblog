@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Post on .ash</title>
-    <link>http://ashblog.ru/post/</link>
-    <description>Recent content in Post on .ash</description>
+    <title>Post-rss on .ash</title>
+    <link>http://ashblog.ru/post/index.xml</link>
+    <description>Recent content in Post-rss on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
     <lastBuildDate>Wed, 26 Oct 2016 14:36:05 +0200</lastBuildDate>
@@ -15,8 +15,7 @@
       <pubDate>Wed, 26 Oct 2016 14:36:05 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/amsterdam1419102016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6023.jpg&#34; /&gt;
     
@@ -29,7 +28,9 @@
 &lt;/figure&gt;
 
 
-&lt;p&gt;
+&lt;p&gt;&lt;/p&gt;
+
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6093.jpg&#34; /&gt;
@@ -41,7 +42,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -54,7 +56,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -67,7 +70,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -80,7 +84,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -93,7 +98,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -106,7 +112,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -118,9 +125,7 @@
         
     &lt;/figcaption&gt;
     
-&lt;/figure&gt;
-&lt;/p&gt;
-</description>
+&lt;/figure&gt;</description>
     </item>
     
     <item>
@@ -129,8 +134,7 @@
       <pubDate>Mon, 10 Oct 2016 19:46:24 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/09102016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/09102016.jpg&#34; /&gt;
     
@@ -143,9 +147,10 @@
 &lt;/figure&gt;
 
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;p&gt;Приехать на море, чтобы замёрзнуть за 2 минуты. А затем поехать обратно&amp;hellip;
-Воскресная тренировка Калининград-Зеленоградск-Калининград.&lt;/p&gt;
-</description>
+Воскресная тренировка Калининград-Зеленоградск-Калининград.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -154,8 +159,7 @@
       <pubDate>Mon, 03 Oct 2016 18:28:49 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/01102016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/01102016.jpg&#34; /&gt;
     
@@ -167,7 +171,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -176,12 +181,12 @@
       <pubDate>Thu, 29 Sep 2016 22:07:48 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/freed-from-desire/</guid>
-      <description>
+      <description>&lt;p&gt;
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//www.youtube.com/embed/CU0-znMCRKc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
  &lt;/div&gt;
 
-</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -190,8 +195,7 @@
       <pubDate>Sat, 24 Sep 2016 19:41:48 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/24092016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/24092016.jpg&#34; /&gt;
     
@@ -203,7 +207,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -212,12 +217,11 @@
       <pubDate>Tue, 30 Aug 2016 19:36:17 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/max-richter/</guid>
-      <description>&lt;iframe frameborder=&#34;0&#34;  
+      <description>&lt;p&gt;&lt;iframe frameborder=&#34;0&#34;  
     style=&#34;border:none;max-width:640px;height:100px;width:100%;&#34;  
     height=&#34;100&#34;  
     src=&#34;https://music.yandex.ru/iframe/#track/2812922/2413918/hide/cover/&#34;&gt;Слушайте &lt;a href=&#39;https://music.yandex.ru/album/2413918/track/2812922&#39;&gt;A Lovers Complaint&lt;/a&gt; — &lt;a href=&#39;https://music.yandex.ru/artist/201862&#39;&gt;Max Richter&lt;/a&gt; на Яндекс.Музыке&lt;/iframe&gt;
-    
-</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -226,8 +230,7 @@
       <pubDate>Sun, 28 Aug 2016 19:31:41 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/27082016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/svetlogorsk-145km.jpg&#34; /&gt;
     
@@ -239,7 +242,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -248,8 +252,7 @@
       <pubDate>Fri, 26 Aug 2016 08:52:57 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/veloart-cafe/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/veloart_wall.jpg&#34; /&gt;
     
@@ -261,7 +264,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -270,8 +274,7 @@
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/second/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/bsea.jpg&#34; /&gt;
     
@@ -283,7 +286,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -292,8 +296,7 @@
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/third/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/stone.jpg&#34; /&gt;
     
@@ -305,7 +308,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -314,8 +318,7 @@
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/first/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/winter.jpg&#34; /&gt;
     
@@ -327,7 +330,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

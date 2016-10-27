@@ -13,7 +13,7 @@
         <meta name="author" content="alexander">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <meta name="generator" content="Hugo 0.16" />
+        <meta name="generator" content="Hugo 0.17" />
         <link rel="icon" href="http://ashblog.ru/assets/favicon.ico" type="image/x-icon"> 
         <link rel="stylesheet" href="http://ashblog.ru/css/slender-base.css">
         <link rel="stylesheet" href="http://ashblog.ru/css/slender-color-schemes.css">
@@ -34,7 +34,7 @@
                 
                     <div style="background-color:pink;width:200px;margin: 0 auto;">
                     <h1 class="brand"><a style="text-decoration:none;" 
-                            href="http://ashblog.ru/">.ash</a></h1>
+                            href="http://ashblog.ru/sp/get-userbyid-pitfall/">.ash</a></h1>
                        </div>
                     <aside>
                         <p>SP.CSOM.Pitfalls: UserCollection</p>
@@ -42,7 +42,8 @@
                 
             </header>
 <article class="article-content">
-    <p>Что будет выведено на экран после выполнения следующего кода?</p>
+    <p>Что будет выведено на экран после выполнения следующего кода?
+</p>
 
 <pre><code class="language-csharp">var byEmail = Context.Web.SiteUsers.GetByEmail(&quot;user1@ashblog.ru&quot;);
 var byID = Context.Web.SiteUsers.GetById(10); 
@@ -79,7 +80,6 @@ byEmail и byID - то увидим два одинаковых значения
 В этом методе всегда создаётся запрос на получение нового значения (пользователя).
 Именно, из-за этого возникло исключение, т.к. для &ldquo;нового&rdquo; пользователя мы не отправляли
 запрос на сервер и не запрашивали свойство Title.</p>
-
     <hr />
     <div id="disqus_thread"></div>
 <script type="text/javascript">

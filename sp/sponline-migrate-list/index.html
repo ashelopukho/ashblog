@@ -13,7 +13,7 @@
         <meta name="author" content="alexander">
         <meta name="description" content="Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля)">
         <meta name="keywords" content="">
-        <meta name="generator" content="Hugo 0.16" />
+        <meta name="generator" content="Hugo 0.17" />
         <link rel="icon" href="http://ashblog.ru/assets/favicon.ico" type="image/x-icon"> 
         <link rel="stylesheet" href="http://ashblog.ru/css/slender-base.css">
         <link rel="stylesheet" href="http://ashblog.ru/css/slender-color-schemes.css">
@@ -34,7 +34,7 @@
                 
                     <div style="background-color:pink;width:200px;margin: 0 auto;">
                     <h1 class="brand"><a style="text-decoration:none;" 
-                            href="http://ashblog.ru/">.ash</a></h1>
+                            href="http://ashblog.ru/sp/sponline-migrate-list/">.ash</a></h1>
                        </div>
                     <aside>
                         <p>SP: Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля)</p>
@@ -45,9 +45,9 @@
     <p>В этом посте мы рассмотрим пример переноса списка с содержимым между коллекциями сайтов.
 &ldquo;Из коробки&rdquo; нам доступен следующий вариант: сохраняем список как шаблон (list settings -&gt; save list as template).
 Cкачиваем сохранённый шаблон из List Template Gallery, и загружаем его в List Template Gallery на той
-коллекции сайтов, где мы хотим восстановить список.</p>
+коллекции сайтов, где мы хотим восстановить список.
 
-<p>Это вариант работает в том случае, если в списке не используются колонки типа Person и Lookup.
+Это вариант работает в том случае, если в списке не используются колонки типа Person и Lookup.
 Колонки с типом Person будут восстановлены, но значения в этих колонках могут быть искажены.
 Значения в колонках типа Person сохраняются как <strong>19;#User Name</strong> (где 19 - ID пользователя, User Name - имя пользователя).
 А восстанавливаются значения по ID. ID пользователя уникален в рамках коллекции сайтов. Поэтому при переносе списка на другую
@@ -189,7 +189,6 @@ virtobr.exe -o recovery -s &ldquo;c:\TestBackup_201608251011&rdquo; -d &ldquo;<a
 </p>
 
 <p>Как видим, у нас появился список с элементами, в которых восстановлены поля типа Lookup и Person.</p>
-
     <hr />
     <div id="disqus_thread"></div>
 <script type="text/javascript">

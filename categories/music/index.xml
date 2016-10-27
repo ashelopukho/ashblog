@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Music on .ash</title>
-    <link>http://ashblog.ru/categories/music/</link>
-    <description>Recent content in Music on .ash</description>
+    <title>.ash</title>
+    <link>http://ashblog.ru/categories/music/index.xml</link>
+    <description>Recent content on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
-    <lastBuildDate>Thu, 29 Sep 2016 22:07:48 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/categories/music/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,12 +14,12 @@
       <pubDate>Thu, 29 Sep 2016 22:07:48 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/freed-from-desire/</guid>
-      <description>
+      <description>&lt;p&gt;
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//www.youtube.com/embed/CU0-znMCRKc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
  &lt;/div&gt;
 
-</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,12 +28,11 @@
       <pubDate>Tue, 30 Aug 2016 19:36:17 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/max-richter/</guid>
-      <description>&lt;iframe frameborder=&#34;0&#34;  
+      <description>&lt;p&gt;&lt;iframe frameborder=&#34;0&#34;  
     style=&#34;border:none;max-width:640px;height:100px;width:100%;&#34;  
     height=&#34;100&#34;  
     src=&#34;https://music.yandex.ru/iframe/#track/2812922/2413918/hide/cover/&#34;&gt;Слушайте &lt;a href=&#39;https://music.yandex.ru/album/2413918/track/2812922&#39;&gt;A Lovers Complaint&lt;/a&gt; — &lt;a href=&#39;https://music.yandex.ru/artist/201862&#39;&gt;Max Richter&lt;/a&gt; на Яндекс.Музыке&lt;/iframe&gt;
-    
-</description>
+&lt;/p&gt;</description>
     </item>
     
   </channel>

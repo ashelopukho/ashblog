@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>.ash</title>
-    <link>http://ashblog.ru/</link>
+    <link>http://ashblog.ru/index.xml</link>
     <description>Recent content on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-RU</language>
@@ -15,8 +15,7 @@
       <pubDate>Wed, 26 Oct 2016 14:36:05 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/amsterdam1419102016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6023.jpg&#34; /&gt;
     
@@ -29,7 +28,9 @@
 &lt;/figure&gt;
 
 
-&lt;p&gt;
+&lt;p&gt;&lt;/p&gt;
+
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6093.jpg&#34; /&gt;
@@ -41,7 +42,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -54,7 +56,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -67,7 +70,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -80,7 +84,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -93,7 +98,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -106,7 +112,8 @@
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;br /&gt;
+
+
 
 &lt;figure &gt;
     
@@ -118,9 +125,7 @@
         
     &lt;/figcaption&gt;
     
-&lt;/figure&gt;
-&lt;/p&gt;
-</description>
+&lt;/figure&gt;</description>
     </item>
     
     <item>
@@ -129,8 +134,7 @@
       <pubDate>Mon, 10 Oct 2016 19:46:24 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/09102016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/09102016.jpg&#34; /&gt;
     
@@ -143,9 +147,10 @@
 &lt;/figure&gt;
 
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;p&gt;Приехать на море, чтобы замёрзнуть за 2 минуты. А затем поехать обратно&amp;hellip;
-Воскресная тренировка Калининград-Зеленоградск-Калининград.&lt;/p&gt;
-</description>
+Воскресная тренировка Калининград-Зеленоградск-Калининград.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -154,8 +159,7 @@
       <pubDate>Mon, 03 Oct 2016 18:28:49 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/01102016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/01102016.jpg&#34; /&gt;
     
@@ -167,7 +171,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -176,12 +181,12 @@
       <pubDate>Thu, 29 Sep 2016 22:07:48 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/freed-from-desire/</guid>
-      <description>
+      <description>&lt;p&gt;
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//www.youtube.com/embed/CU0-znMCRKc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
  &lt;/div&gt;
 
-</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -190,8 +195,7 @@
       <pubDate>Sat, 24 Sep 2016 19:41:48 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/24092016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/24092016.jpg&#34; /&gt;
     
@@ -203,7 +207,8 @@
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -212,7 +217,8 @@
       <pubDate>Fri, 09 Sep 2016 08:25:58 +0200</pubDate>
       
       <guid>http://ashblog.ru/sp/get-userbyid-pitfall/</guid>
-      <description>&lt;p&gt;Что будет выведено на экран после выполнения следующего кода?&lt;/p&gt;
+      <description>&lt;p&gt;Что будет выведено на экран после выполнения следующего кода?
+&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;var byEmail = Context.Web.SiteUsers.GetByEmail(&amp;quot;user1@ashblog.ru&amp;quot;);
 var byID = Context.Web.SiteUsers.GetById(10); 
@@ -248,8 +254,7 @@ byEmail и byID - то увидим два одинаковых значения
 &lt;p&gt;Оказывается, что метод GetById не ищет пользователя в проинициализированной коллекции.
 В этом методе всегда создаётся запрос на получение нового значения (пользователя).
 Именно, из-за этого возникло исключение, т.к. для &amp;ldquo;нового&amp;rdquo; пользователя мы не отправляли
-запрос на сервер и не запрашивали свойство Title.&lt;/p&gt;
-</description>
+запрос на сервер и не запрашивали свойство Title.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -258,12 +263,11 @@ byEmail и byID - то увидим два одинаковых значения
       <pubDate>Tue, 30 Aug 2016 19:36:17 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/max-richter/</guid>
-      <description>&lt;iframe frameborder=&#34;0&#34;  
+      <description>&lt;p&gt;&lt;iframe frameborder=&#34;0&#34;  
     style=&#34;border:none;max-width:640px;height:100px;width:100%;&#34;  
     height=&#34;100&#34;  
     src=&#34;https://music.yandex.ru/iframe/#track/2812922/2413918/hide/cover/&#34;&gt;Слушайте &lt;a href=&#39;https://music.yandex.ru/album/2413918/track/2812922&#39;&gt;A Lovers Complaint&lt;/a&gt; — &lt;a href=&#39;https://music.yandex.ru/artist/201862&#39;&gt;Max Richter&lt;/a&gt; на Яндекс.Музыке&lt;/iframe&gt;
-    
-</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -272,11 +276,10 @@ byEmail и byID - то увидим два одинаковых значения
       <pubDate>Mon, 29 Aug 2016 12:08:21 +0200</pubDate>
       
       <guid>http://ashblog.ru/sp/debug-remote-event-receivers/</guid>
-      <description>
-
-&lt;p&gt;Обычно отладка Remote Event Receivers в SharePoint Online выполняется с помощью Service Bus.
+      <description>&lt;p&gt;Обычно отладка Remote Event Receivers в SharePoint Online выполняется с помощью Service Bus.
 Я писал подробно про это &lt;a href=&#34;http://blog.virtosoftware.com/2014/12/creating-and-debugging-of-remote-event.html&#34;&gt;здесь&lt;/a&gt; и &lt;a href=&#34;http://blog.virtosoftware.com/2015/01/adding-remote-event-receivers-to-list.html&#34;&gt;здесь&lt;/a&gt;.
-Сегодня мы рассмотрим другой (более простой) путь решения этой задачи.&lt;/p&gt;
+Сегодня мы рассмотрим другой (более простой) путь решения этой задачи.&lt;br /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Если коротко, то всё что нам нужно - это использовать &lt;strong&gt;&lt;a href=&#34;https://ngrok.com/&#34;&gt;ngrok&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
 На странице продукта коротко и ёмко описано его предназначение: ngrok - secure tunnels to localhost.&lt;/p&gt;
@@ -554,8 +557,7 @@ byEmail и byID - то увидим два одинаковых значения
 &lt;p&gt;Цель достигнута. ngrok отлично подходит для отладки Remote Event Receivers списков и элементов, webhooks, httpsend action.
 Так же можно использовать его для демонстрации работы add-in без развёртывания приложения на внешний хостинг.
 Минусом является то, что в бесплатной версии ngrok-туннель живёт, пока не закрыто приложение ngrok.
-В платной версии можно создавать постоянные адреса.&lt;/p&gt;
-</description>
+В платной версии можно создавать постоянные адреса.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -564,8 +566,7 @@ byEmail и byID - то увидим два одинаковых значения
       <pubDate>Sun, 28 Aug 2016 19:31:41 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/27082016/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/svetlogorsk-145km.jpg&#34; /&gt;
     
@@ -577,7 +578,8 @@ byEmail и byID - то увидим два одинаковых значения
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -588,7 +590,8 @@ byEmail и byID - то увидим два одинаковых значения
       <guid>http://ashblog.ru/sp/list-fill-test-data/</guid>
       <description>&lt;p&gt;Создание тестовых данных в SharePoint - одна из тех задач, которая периодически возникает во время:
 разработки, тестирования, демонстрации портала.
-Сегодня рассмотрим как можно быстро создать список, заполненный случайными данными.&lt;/p&gt;
+Сегодня рассмотрим как можно быстро создать список, заполненный случайными данными.
+&lt;/p&gt;
 
 &lt;p&gt;Для этого нам понадобится nuget package: &lt;a href=&#34;https://www.nuget.org/packages/SPS.SPRandom.Core/&#34;&gt;SPS.SPRandom.Core&lt;/a&gt;&lt;br /&gt;
 Проект пока в статусе Alpha, однако для решения некоторых задач уже может использоваться.&lt;br /&gt;
@@ -662,8 +665,7 @@ namespace SPConsole
 
 
 &lt;p&gt;Проект пока в самом &amp;ldquo;зачаточном&amp;rdquo; варианте.&lt;br /&gt;
-Код здесь: &lt;a href=&#34;https://biogenez.github.io/SPS.SPRandom/&#34;&gt;https://biogenez.github.io/SPS.SPRandom/&lt;/a&gt;&lt;/p&gt;
-</description>
+Код здесь: &lt;a href=&#34;https://biogenez.github.io/SPS.SPRandom/&#34;&gt;https://biogenez.github.io/SPS.SPRandom/&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -672,8 +674,7 @@ namespace SPConsole
       <pubDate>Fri, 26 Aug 2016 08:52:57 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/veloart-cafe/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/veloart_wall.jpg&#34; /&gt;
     
@@ -685,7 +686,8 @@ namespace SPConsole
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -697,9 +699,9 @@ namespace SPConsole
       <description>&lt;p&gt;В этом посте мы рассмотрим пример переноса списка с содержимым между коллекциями сайтов.
 &amp;ldquo;Из коробки&amp;rdquo; нам доступен следующий вариант: сохраняем список как шаблон (list settings -&amp;gt; save list as template).
 Cкачиваем сохранённый шаблон из List Template Gallery, и загружаем его в List Template Gallery на той
-коллекции сайтов, где мы хотим восстановить список.&lt;/p&gt;
+коллекции сайтов, где мы хотим восстановить список.
 
-&lt;p&gt;Это вариант работает в том случае, если в списке не используются колонки типа Person и Lookup.
+Это вариант работает в том случае, если в списке не используются колонки типа Person и Lookup.
 Колонки с типом Person будут восстановлены, но значения в этих колонках могут быть искажены.
 Значения в колонках типа Person сохраняются как &lt;strong&gt;19;#User Name&lt;/strong&gt; (где 19 - ID пользователя, User Name - имя пользователя).
 А восстанавливаются значения по ID. ID пользователя уникален в рамках коллекции сайтов. Поэтому при переносе списка на другую
@@ -840,8 +842,7 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
 &lt;/figure&gt;
 &lt;/p&gt;
 
-&lt;p&gt;Как видим, у нас появился список с элементами, в которых восстановлены поля типа Lookup и Person.&lt;/p&gt;
-</description>
+&lt;p&gt;Как видим, у нас появился список с элементами, в которых восстановлены поля типа Lookup и Person.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -850,8 +851,7 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/second/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/bsea.jpg&#34; /&gt;
     
@@ -863,7 +863,8 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -872,8 +873,7 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/third/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/stone.jpg&#34; /&gt;
     
@@ -885,7 +885,8 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -894,8 +895,7 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
       <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
       
       <guid>http://ashblog.ru/post/first/</guid>
-      <description>
-&lt;figure &gt;
+      <description>&lt;figure &gt;
     
         &lt;img src=&#34;http://ashblog.ru/images/winter.jpg&#34; /&gt;
     
@@ -907,7 +907,8 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
     
 &lt;/figure&gt;
 
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
