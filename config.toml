@@ -60,3 +60,6 @@ pluralizelisttitles = false
     # Google Analytics
     # Remove, comment, or leave it blank if you don't have one.
     ganalytics = "UA-50925053-3"
+
+    #cdn url (azure cdn)
+    cdn = "http://ashblog.azureedge.net/"
