@@ -8,7 +8,7 @@
         <meta property="og:description" content="{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
         <meta property="og:url" content="{{ .Permalink }}" />
         <meta property="og:locale" content="{{ .Site.LanguageCode }}">
-        {{ if .Params.imgsrc }}<meta property="og:image" content="{{ .Params.imgsrc | absURL }}" />{{ end }}
+        {{ if .Params.imgsrc }}<meta property="og:image" content="{{ if .Site.Params.isrelease  }}{{ .Site.Params.cdn }}{{ .Params.imgsrc }}{{ else }}{{ .Params.imgsrc | absURL }}{{ end }}" />{{ end }}
         {{ if (or (eq .Section "post") (eq .Section "sp")) }}<meta property="og:type" content="article" />{{ end }}
         <meta name="author" content="{{ .Site.Author.name }}">
         <meta name="description" content="{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
