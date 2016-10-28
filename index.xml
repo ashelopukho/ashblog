@@ -17,7 +17,9 @@
       <guid>http://ashblog.ru/post/amsterdam1419102016/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6023.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/amsterdam2016/6023.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -33,7 +35,9 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6093.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/amsterdam2016/6093.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -47,7 +51,9 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6362.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/amsterdam2016/6362.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -61,7 +67,9 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6107.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/amsterdam2016/6107.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -75,7 +83,9 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6111.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/amsterdam2016/6111.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -89,7 +99,9 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6135.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/amsterdam2016/6135.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -103,7 +115,9 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6137.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/amsterdam2016/6137.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -117,7 +131,9 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/amsterdam2016/6196.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/amsterdam2016/6196.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -136,7 +152,9 @@
       <guid>http://ashblog.ru/post/09102016/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/09102016.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/09102016.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -161,7 +179,9 @@
       <guid>http://ashblog.ru/post/01102016/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/01102016.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/01102016.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -197,7 +217,9 @@
       <guid>http://ashblog.ru/post/24092016/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/24092016.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/24092016.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -292,7 +314,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-addin-installed-rer.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-addin-installed-rer.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -312,7 +336,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-addin-servicebus-msg.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-addin-servicebus-msg.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -335,7 +361,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/ngrok-run.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/ngrok-run.png&#34;  /&gt;
+    
     
     
 &lt;/figure&gt;
@@ -346,7 +374,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-addin-localhost-port.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-addin-localhost-port.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -362,7 +392,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/set-as-startup-project.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/set-as-startup-project.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -378,7 +410,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/ngrok-access-ok.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/ngrok-access-ok.png&#34;  /&gt;
+    
     
     
 &lt;/figure&gt;
@@ -398,7 +432,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/ngrok-rer-address.PNG&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/ngrok-rer-address.PNG&#34;  /&gt;
+    
     
     
 &lt;/figure&gt;
@@ -416,7 +452,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/ngrok-endpoint-problem.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/ngrok-endpoint-problem.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -438,7 +476,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-reg-addin.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-reg-addin.png&#34;  /&gt;
+    
     
     
 &lt;/figure&gt;
@@ -459,7 +499,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-apppackages-lib.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-apppackages-lib.png&#34;  /&gt;
+    
     
     
 &lt;/figure&gt;
@@ -475,7 +517,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-deploy-addin.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-deploy-addin.png&#34;  /&gt;
+    
     
     
 &lt;/figure&gt;
@@ -488,7 +532,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-addin-install-inprogress.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-addin-install-inprogress.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -504,7 +550,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-fire-breakpoint.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-fire-breakpoint.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -520,7 +568,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-audience-exception.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-audience-exception.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -543,7 +593,9 @@ byEmail и byID - то увидим два одинаковых значения
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spngrok-final-breakpoint-ok.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spngrok-final-breakpoint-ok.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -568,7 +620,9 @@ byEmail и byID - то увидим два одинаковых значения
       <guid>http://ashblog.ru/post/27082016/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/svetlogorsk-145km.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/svetlogorsk-145km.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -653,7 +707,9 @@ namespace SPConsole
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/spgen_50_items.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/spgen_50_items.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -676,7 +732,9 @@ namespace SPConsole
       <guid>http://ashblog.ru/post/veloart-cafe/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/veloart_wall.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/veloart_wall.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -721,7 +779,9 @@ ID списка, на который ссылается колонка. А пр�
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/test_list.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/test_list.png&#34;  /&gt;
+    
     
     
 &lt;/figure&gt;
@@ -736,7 +796,9 @@ ID списка, на который ссылается колонка. А пр�
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/testconfig_before.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/testconfig_before.png&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -836,7 +898,9 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/test_list_recovery.png&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/test_list_recovery.png&#34;  /&gt;
+    
     
     
 &lt;/figure&gt;
@@ -853,7 +917,9 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
       <guid>http://ashblog.ru/post/second/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/bsea.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/bsea.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -875,7 +941,9 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
       <guid>http://ashblog.ru/post/third/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/stone.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/stone.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
@@ -897,7 +965,9 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
       <guid>http://ashblog.ru/post/first/</guid>
       <description>&lt;figure &gt;
     
-        &lt;img src=&#34;http://ashblog.ru/images/winter.jpg&#34; /&gt;
+    
+            &lt;img src=&#34;http://ashblog.azureedge.net/images/winter.jpg&#34;  /&gt;
+    
     
     
     &lt;figcaption&gt;
