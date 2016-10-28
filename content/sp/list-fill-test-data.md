@@ -70,7 +70,7 @@ namespace SPConsole
 В строке **spGen.FillListWithRandomData(testList, 50);** - вызывается код для создания 50 элементов, которые будут заполнены случайными данными. 
 Выполним код и посмотрим результат:
 
-{{< figure src="/images/spgen_50_items.png" title="Созданный список с элементами." >}}
+{{< cdnfigure src="/images/spgen_50_items.png" title="Созданный список с элементами." >}}
 
 Проект пока в самом "зачаточном" варианте.  
 Код здесь: https://biogenez.github.io/SPS.SPRandom/

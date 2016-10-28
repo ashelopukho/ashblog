@@ -4,6 +4,6 @@ draft = false
 title = "baltic sea"
 +++
 
-{{< figure src="/images/bsea.jpg" title="baltic sea" >}}
+{{< cdnfigure src="/images/bsea.jpg" title="baltic sea" >}}
 
 <!--more-->

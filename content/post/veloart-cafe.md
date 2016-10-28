@@ -5,6 +5,6 @@ keywords = []
 title = "veloart cafe"
 +++
 
-{{< figure src="/images/veloart_wall.jpg" title="warszawa: veloart cafe" >}}
+{{< cdnfigure src="/images/veloart_wall.jpg" title="warszawa: veloart cafe" >}}
 
 <!--more-->

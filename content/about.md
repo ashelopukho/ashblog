@@ -5,7 +5,7 @@ title = ".я"
 
 +++
 
-{{< figure src="/images/me.jpg" title="-" >}}
+{{< cdnfigure src="/images/me.jpg" title="-" >}}
 
 ##### .о
 .name(alexander)  

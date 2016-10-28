@@ -4,6 +4,6 @@ draft = false
 title = "winter"
 +++
 
-{{< figure src="/images/winter.jpg" title="-15" >}}
+{{< cdnfigure src="/images/winter.jpg" title="-15" >}}
 
 <!--more-->

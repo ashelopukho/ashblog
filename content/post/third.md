@@ -4,6 +4,6 @@ draft = false
 title = "stone"
 +++
 
-{{< figure src="/images/stone.jpg" title="stone" >}}
+{{< cdnfigure src="/images/stone.jpg" title="stone" >}}
 
 <!--more-->
