@@ -62,4 +62,4 @@ disqusShortname = "biogenez"
     ganalytics = "UA-50925053-3"
 
     #cdn url (azure cdn)
-    cdn = "http://ashblog.azureedge.net"
+    cdn = "http://cdn.ashblog.ru"
