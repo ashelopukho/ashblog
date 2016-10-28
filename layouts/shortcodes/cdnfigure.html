@@ -1,7 +1,7 @@
 <!-- image -->
 <figure {{ with .Get "class" }}class="{{.}}"{{ end }}>
     {{ with .Get "link"}}<a href="{{.}}">{{ end }}
-    {{ if ne .Site.BaseURL "http://localhost:1313/" }}
+    {{ if .Site.Params.isrelease  }}
             <img src="{{ .Site.Params.cdn }}{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} />
     {{ else }}
             <img src="{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} />

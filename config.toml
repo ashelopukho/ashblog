@@ -63,3 +63,6 @@ disqusShortname = "biogenez"
 
     #cdn url (azure cdn)
     cdn = "http://cdn.ashblog.ru"
+
+    #is release
+    isrelease = true
