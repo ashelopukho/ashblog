@@ -1,5 +1,5 @@
 baseurl = "http://ashblog.ru/"
-languageCode = "ru-RU"
+languageCode = "ru_RU"
 title = ".ash"
 #uglyurls = true
 MetaDataFormat = "toml"
