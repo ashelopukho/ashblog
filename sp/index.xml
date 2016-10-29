@@ -5,7 +5,7 @@
     <link>http://ashblog.ru/sp/index.xml</link>
     <description>Recent content in Sp-rss on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru-RU</language>
+    <language>ru_RU</language>
     <lastBuildDate>Fri, 09 Sep 2016 08:25:58 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/sp/index.xml" rel="self" type="application/rss+xml" />
     
