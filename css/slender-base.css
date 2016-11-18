@@ -239,6 +239,11 @@ article h5 {
     color: #000;
 }
 
+.article-content figure {
+    margin-bottom: 20px;   
+}
+
+
 /* Footer */
 
 footer {

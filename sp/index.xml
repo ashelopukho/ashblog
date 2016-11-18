@@ -6,8 +6,51 @@
     <description>Recent content in Sp-rss on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
-    <lastBuildDate>Fri, 09 Sep 2016 08:25:58 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Nov 2016 11:08:07 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/sp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Как добавить плитку в App Launcher в O365</title>
+      <link>http://ashblog.ru/sp/add-custom-tiles-to-applauncher/</link>
+      <pubDate>Fri, 18 Nov 2016 11:08:07 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/sp/add-custom-tiles-to-applauncher/</guid>
+      <description>&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/add-custom-tile.png&#34;  /&gt;
+    
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;В Office 365 появилась возможность добавлять плитки в App Launcher.&lt;br /&gt;
+Сделать это можно под учётной записью с правами Администратора.
+Для этого заходим в центр администрирования (плита Admin в App Launcher).
+Далее открываем категорию &lt;strong&gt;Settings&lt;/strong&gt;, кликаем на &lt;strong&gt;Add custom tiles for your organization.&lt;/strong&gt;&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/add-custom-tile-admin.png&#34;  /&gt;
+    
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Далее &lt;strong&gt;+ Add a custom tile&lt;/strong&gt;.
+Вводим Title, URL, Description, Image URL.
+Размер картинки должен быть строго 60x60. И доступен для
+анонимных пользователей.
+Далее жмём Save.
+Скорее всего иконка не появится сразу после создания.
+Необходимо подождать пока будет выполнена синхронизация на серверах Office 365.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>SP.CSOM.Pitfalls: UserCollection</title>

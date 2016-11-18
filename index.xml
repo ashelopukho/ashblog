@@ -6,8 +6,51 @@
     <description>Recent content on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
-    <lastBuildDate>Mon, 07 Nov 2016 15:46:48 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 18 Nov 2016 11:08:07 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Как добавить плитку в App Launcher в O365</title>
+      <link>http://ashblog.ru/sp/add-custom-tiles-to-applauncher/</link>
+      <pubDate>Fri, 18 Nov 2016 11:08:07 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/sp/add-custom-tiles-to-applauncher/</guid>
+      <description>&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/add-custom-tile.png&#34;  /&gt;
+    
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;В Office 365 появилась возможность добавлять плитки в App Launcher.&lt;br /&gt;
+Сделать это можно под учётной записью с правами Администратора.
+Для этого заходим в центр администрирования (плита Admin в App Launcher).
+Далее открываем категорию &lt;strong&gt;Settings&lt;/strong&gt;, кликаем на &lt;strong&gt;Add custom tiles for your organization.&lt;/strong&gt;&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/add-custom-tile-admin.png&#34;  /&gt;
+    
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Далее &lt;strong&gt;+ Add a custom tile&lt;/strong&gt;.
+Вводим Title, URL, Description, Image URL.
+Размер картинки должен быть строго 60x60. И доступен для
+анонимных пользователей.
+Далее жмём Save.
+Скорее всего иконка не появится сразу после создания.
+Необходимо подождать пока будет выполнена синхронизация на серверах Office 365.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>04112016</title>
@@ -951,30 +994,6 @@ virtobr.exe -o recovery -s &amp;ldquo;c:\TestBackup_201608251011&amp;rdquo; -d &
     
     &lt;figcaption&gt;
         &lt;h4&gt;baltic sea&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>stone</title>
-      <link>http://ashblog.ru/post/third/</link>
-      <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
-      
-      <guid>http://ashblog.ru/post/third/</guid>
-      <description>&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/stone.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;stone&lt;/h4&gt;
         
     &lt;/figcaption&gt;
     
