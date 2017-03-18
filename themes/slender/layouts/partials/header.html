@@ -31,7 +31,7 @@
         <div class="container">
             <header>
                 <nav>
-                    <ul>{{ range .Site.Menus.main }}<li><a href="{{ .URL | absURL }}">{{ .Name }}</a></li>{{ end }}</ul>
+                    <ul>{{ range sort .Site.Menus.main ".Weight" }}<li><a href="{{ .URL | absURL }}">{{ .Name }}</a></li>{{ end }}</ul>
                 </nav>
                 {{ if eq .Section "page" }}
                     <h1 class="title">{{ .Title }}</h1>

@@ -24,7 +24,7 @@ disqusShortname = "biogenez"
 
     [[menu.main]]
     identifier = "sp"
-    name       = ".sp"
+    name       = ".dev"
     url        = "sp/"
     weight     = 1
 
@@ -66,3 +66,5 @@ disqusShortname = "biogenez"
 
     #is release
     isrelease = true
+
+
