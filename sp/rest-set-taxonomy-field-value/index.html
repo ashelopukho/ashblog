@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru_RU">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="SP.Dev: Установка значений Managed Metadata через REST &middot; .ash ">
+        <meta property="og:site_name" content=".ash"/>
+        <meta property="og:description" content="">
+        <meta property="og:url" content="http://ashblog.ru/sp/rest-set-taxonomy-field-value/" />
+        <meta property="og:locale" content="ru_RU">
+        
+        <meta property="og:type" content="article" />
+        <meta name="author" content="alexander">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="generator" content="Hugo 0.19" />
+        <link rel="icon" href="http://ashblog.ru/assets/favicon.ico" type="image/x-icon"> 
+        <link rel="stylesheet" href="http://ashblog.ru/css/slender-base.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/slender-color-schemes.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/font-awesome-4.5.0.min.css">
+        <link rel="stylesheet" href="http://ashblog.ru/css/highlight-9.0.0-default.min.css">
+        <title>
+            
+                sp.dev: установка значений managed metadata через rest &middot; .ash
+            
+        </title>
+    </head>
+    <body class="color-scheme-white">
+        <div class="container">
+            <header>
+                <nav>
+                    <ul><li><a href="http://ashblog.ru/sp/">.sp</a></li><li><a href="http://ashblog.ru/about/">.я</a></li><li><a href="http://ashblog.ru/">.дом</a></li></ul>
+                </nav>
+                
+                    <div style="background-color:pink;width:200px;margin: 0 auto;">
+                    <h1 class="brand"><a style="text-decoration:none;" 
+                            href="http://ashblog.ru/sp/rest-set-taxonomy-field-value/">.ash</a></h1>
+                       </div>
+                    <aside>
+                        <p>SP.Dev: Установка значений Managed Metadata через REST</p>
+                    </aside>
+                
+            </header>
+<article class="article-content">
+    <p>В SharePoint REST API нет официальной поддержки для установки значений
+полей типа Managed Metadata (Taxonomy).
+Но сделать это всё таки можно.
+</p>
+
+<p>Итак, для начала нам понадобится список с колонками Managed Metadata и Managed Metadata Multi.</p>
+
+<pre><code class="language-javascript">const LIST_TITLE = 'MMDataTestList';
+// internal field names
+const MM_FieldInternalName = 'MM';
+const MM_MULTI_FieldInternalName = 'MMMULTI';
+</code></pre>
+
+
+<figure >
+    
+    
+            <img src="http://cdn.ashblog.ru/images/sp/mm-data-first-item.png"  />
+    
+    
+    
+</figure>
+
+
+<p>В примере я буду использовать библиотеку sp-pnp-js.
+Это позволит сократить кол-во строчек в коде, да и сам код сделает понятней.</p>
+
+<p>При создании колонки типа Managed Metadata (Multi), автоматически создаётся скрытая колонка
+типа Note. Её Title состоит из имени соответствующей Managed Metadata колонки + <em>_0</em>.
+В нашем случае это <em>MM_0</em> и <em>MMMULTI_0</em>.
+И здесь стоит быть внимательным, т.к. если создать колонку c именем <em>M M</em>, а затем переименовть её,
+например в <em>My Metadata</em>, то имя скрытой колонки не изменится, т.е. останется <em>M M_0</em>.
+Но и здесь кроектся подвох. Дело в том, что если в имени скрытой колонки будут пробелы, то
+с помощью REST ей не получится присвоить значение.
+Таким образом колонки типа Managed Metadata лучше всего создавать так:
+сначала создаём колонку с названием из латинских букв без пробелов, а затем переименовываем её
+как нам захочется (если необходимо).
+Например, мы хотим создать колонку с именем <em>My Meta</em>. Сначала создаём колонку с именем <em>MyMeta</em>,
+затем переименовываем её в <em>My Meta</em>. Скрытая колонка будет по-прежнему иметь имя <em>MyMeta_0</em></p>
+
+<p>Ниже приведён пример функции, которая находит скрытые колонки для наших Managed Metadata колонок,
+и присваивает их Internal Names переменным <em>mm_multi_hidden_field, mm_hidden_field</em>.</p>
+
+<pre><code class="language-javascript">let mm_multi_hidden_field;
+let mm_hidden_field;
+
+function loadTaxonomyHiddenFields() {
+    return $pnp.sp.web.lists.getByTitle(LIST_TITLE).fields.select('Title', 'InternalName').get()
+        .then((fields) =&gt; {
+            mm_hidden_field = _.find(fields, {
+                Title: (MM_FieldInternalName + '_0')
+            }).InternalName;
+            
+            mm_multi_hidden_field = _.find(fields, {
+                Title: (MM_MULTI_FieldInternalName + '_0')
+            }).InternalName;
+        });
+} 
+</code></pre>
+
+<p>Далее мы напишем функцию, которая скопирует значение Managed Metadata колонок
+из одного элемента списка в другой.</p>
+
+<pre><code class="language-javascript">function getItemById(listTitle, id) {
+    return $pnp.sp.web.lists.getByTitle(listTitle).items.getById(id);
+}
+
+export function copyTaxonomyFieldValues(sourceItemID, destItemID) {
+    loadTaxonomyHiddenFields()
+        .then(() =&gt; getItemById(LIST_TITLE, sourceItemID)
+            .select(MM_FieldInternalName, MM_MULTI_FieldInternalName).get())
+        .then((sourceItem) =&gt; {
+
+            let resultValue = {};
+
+            // set single managed metadata field value
+            const mm_Value = sourceItem[MM_FieldInternalName];
+            const strMMDataValue = mm_Value ? mm_Value.Label + &quot;|&quot; + mm_Value.TermGuid : null;
+            resultValue[mm_hidden_field] = strMMDataValue;
+
+            // set multiple managed metadata field value
+            const mm_multi_Value = sourceItem[MM_MULTI_FieldInternalName];
+            const strMMMultiValue = mm_multi_Value ? _.map(mm_multi_Value.results, f =&gt; ('-1;#' + f.Label + '|' + f.TermGuid)).join(';') : null;
+            resultValue[mm_multi_hidden_field] = strMMMultiValue;
+
+            console.log(resultValue);
+
+            return resultValue;
+        })
+        .then((r) =&gt; getItemById(LIST_TITLE, destItemID).update(r))
+        .then(() =&gt; console.log(&quot;OK&quot;))
+        .catch((err) =&gt; console.log(err));
+}
+</code></pre>
+
+<p>Первая функция <em>getItemById</em> - вспомогательная. Она возвращает элемент из списка.
+Давайте разберём функцию <em>copyTaxonomyFieldValues</em>.
+Сначала мы используем <em>loadTaxonomyHiddenFields</em> для получения internal names
+скрытых колонок. Затем загружаем source item.
+Далее мы строим строковые значения, для MM и MMMulti, которые будут присвоены
+соответствующим скрытым колонкам. Значения для multi и не-multi колонок строятся
+по-разному. Для multi мы создаём массив значений и объединяем его в строку с разделителем <em>;</em>.
+В конце мы вызываем метод update, для обновления dest item.</p>
+
+
+<figure >
+    
+    
+            <img src="http://cdn.ashblog.ru/images/sp/mm-data-result.png"  />
+    
+    
+    
+</figure>
+
+
+<p>Полный пример кода можно найти здесь:
+<a href="https://github.com/biogenez/sp-rest-taxonomy">https://github.com/biogenez/sp-rest-taxonomy</a></p>
+    <hr />
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'biogenez';
+    var disqus_identifier = 'http:\/\/ashblog.ru\/sp\/rest-set-taxonomy-field-value\/';
+    var disqus_title = 'SP.Dev: Установка значений Managed Metadata через REST';
+    var disqus_url = 'http:\/\/ashblog.ru\/sp\/rest-set-taxonomy-field-value\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>    
+</article>
+        </div>
+        <footer>
+            <p>-</p>
+        </footer>
+        <script src="http://ashblog.ru/js/highlight-9.0.0.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-50925053-3']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+        
+        <script src="http://ashblog.ru/js/main.js"></script>
+    </body>
+</html>

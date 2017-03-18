@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>.ash</title>
+    <title>Main on .ash</title>
     <link>http://ashblog.ru/categories/main/index.xml</link>
-    <description>Recent content on .ash</description>
+    <description>Recent content in Main on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
     <atom:link href="http://ashblog.ru/categories/main/index.xml" rel="self" type="application/rss+xml" />

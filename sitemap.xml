@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://ashblog.ru/</loc>
-    <lastmod>2016-11-18T11:08:07+02:00</lastmod>
+    <loc>http://ashblog.ru/sp/rest-set-taxonomy-field-value/</loc>
+    <lastmod>2017-03-07T10:34:23+02:00</lastmod>
   </url>
   
   <url>
@@ -94,6 +94,59 @@
   <url>
     <loc>http://ashblog.ru/about/</loc>
     <lastmod>2016-01-09T18:45:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/</loc>
+    <lastmod>2017-03-07T10:34:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/categories/bike/</loc>
+    <lastmod>2016-10-10T19:46:24+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/categories/main/</loc>
+    <lastmod>2016-11-07T15:46:48+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/categories/music/</loc>
+    <lastmod>2016-09-29T22:07:48+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/post/</loc>
+    <lastmod>2016-11-07T15:46:48+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/categories/sp/</loc>
+    <lastmod>2017-03-07T10:34:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/sp/</loc>
+    <lastmod>2017-03-07T10:34:23+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ashblog.ru/categories/video/</loc>
+    <lastmod>2016-09-29T22:07:48+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

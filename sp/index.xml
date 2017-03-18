@@ -1,13 +1,138 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sp-rss on .ash</title>
+    <title>Sp on .ash</title>
     <link>http://ashblog.ru/sp/index.xml</link>
-    <description>Recent content in Sp-rss on .ash</description>
+    <description>Recent content in Sp on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
-    <lastBuildDate>Fri, 18 Nov 2016 11:08:07 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 07 Mar 2017 10:34:23 +0200</lastBuildDate>
     <atom:link href="http://ashblog.ru/sp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SP.Dev: Установка значений Managed Metadata через REST</title>
+      <link>http://ashblog.ru/sp/rest-set-taxonomy-field-value/</link>
+      <pubDate>Tue, 07 Mar 2017 10:34:23 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/sp/rest-set-taxonomy-field-value/</guid>
+      <description>&lt;p&gt;В SharePoint REST API нет официальной поддержки для установки значений
+полей типа Managed Metadata (Taxonomy).
+Но сделать это всё таки можно.
+&lt;/p&gt;
+
+&lt;p&gt;Итак, для начала нам понадобится список с колонками Managed Metadata и Managed Metadata Multi.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const LIST_TITLE = &#39;MMDataTestList&#39;;
+// internal field names
+const MM_FieldInternalName = &#39;MM&#39;;
+const MM_MULTI_FieldInternalName = &#39;MMMULTI&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/mm-data-first-item.png&#34;  /&gt;
+    
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;В примере я буду использовать библиотеку sp-pnp-js.
+Это позволит сократить кол-во строчек в коде, да и сам код сделает понятней.&lt;/p&gt;
+
+&lt;p&gt;При создании колонки типа Managed Metadata (Multi), автоматически создаётся скрытая колонка
+типа Note. Её Title состоит из имени соответствующей Managed Metadata колонки + &lt;em&gt;_0&lt;/em&gt;.
+В нашем случае это &lt;em&gt;MM_0&lt;/em&gt; и &lt;em&gt;MMMULTI_0&lt;/em&gt;.
+И здесь стоит быть внимательным, т.к. если создать колонку c именем &lt;em&gt;M M&lt;/em&gt;, а затем переименовть её,
+например в &lt;em&gt;My Metadata&lt;/em&gt;, то имя скрытой колонки не изменится, т.е. останется &lt;em&gt;M M_0&lt;/em&gt;.
+Но и здесь кроектся подвох. Дело в том, что если в имени скрытой колонки будут пробелы, то
+с помощью REST ей не получится присвоить значение.
+Таким образом колонки типа Managed Metadata лучше всего создавать так:
+сначала создаём колонку с названием из латинских букв без пробелов, а затем переименовываем её
+как нам захочется (если необходимо).
+Например, мы хотим создать колонку с именем &lt;em&gt;My Meta&lt;/em&gt;. Сначала создаём колонку с именем &lt;em&gt;MyMeta&lt;/em&gt;,
+затем переименовываем её в &lt;em&gt;My Meta&lt;/em&gt;. Скрытая колонка будет по-прежнему иметь имя &lt;em&gt;MyMeta_0&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Ниже приведён пример функции, которая находит скрытые колонки для наших Managed Metadata колонок,
+и присваивает их Internal Names переменным &lt;em&gt;mm_multi_hidden_field, mm_hidden_field&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;let mm_multi_hidden_field;
+let mm_hidden_field;
+
+function loadTaxonomyHiddenFields() {
+    return $pnp.sp.web.lists.getByTitle(LIST_TITLE).fields.select(&#39;Title&#39;, &#39;InternalName&#39;).get()
+        .then((fields) =&amp;gt; {
+            mm_hidden_field = _.find(fields, {
+                Title: (MM_FieldInternalName + &#39;_0&#39;)
+            }).InternalName;
+            
+            mm_multi_hidden_field = _.find(fields, {
+                Title: (MM_MULTI_FieldInternalName + &#39;_0&#39;)
+            }).InternalName;
+        });
+} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Далее мы напишем функцию, которая скопирует значение Managed Metadata колонок
+из одного элемента списка в другой.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function getItemById(listTitle, id) {
+    return $pnp.sp.web.lists.getByTitle(listTitle).items.getById(id);
+}
+
+export function copyTaxonomyFieldValues(sourceItemID, destItemID) {
+    loadTaxonomyHiddenFields()
+        .then(() =&amp;gt; getItemById(LIST_TITLE, sourceItemID)
+            .select(MM_FieldInternalName, MM_MULTI_FieldInternalName).get())
+        .then((sourceItem) =&amp;gt; {
+
+            let resultValue = {};
+
+            // set single managed metadata field value
+            const mm_Value = sourceItem[MM_FieldInternalName];
+            const strMMDataValue = mm_Value ? mm_Value.Label + &amp;quot;|&amp;quot; + mm_Value.TermGuid : null;
+            resultValue[mm_hidden_field] = strMMDataValue;
+
+            // set multiple managed metadata field value
+            const mm_multi_Value = sourceItem[MM_MULTI_FieldInternalName];
+            const strMMMultiValue = mm_multi_Value ? _.map(mm_multi_Value.results, f =&amp;gt; (&#39;-1;#&#39; + f.Label + &#39;|&#39; + f.TermGuid)).join(&#39;;&#39;) : null;
+            resultValue[mm_multi_hidden_field] = strMMMultiValue;
+
+            console.log(resultValue);
+
+            return resultValue;
+        })
+        .then((r) =&amp;gt; getItemById(LIST_TITLE, destItemID).update(r))
+        .then(() =&amp;gt; console.log(&amp;quot;OK&amp;quot;))
+        .catch((err) =&amp;gt; console.log(err));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Первая функция &lt;em&gt;getItemById&lt;/em&gt; - вспомогательная. Она возвращает элемент из списка.
+Давайте разберём функцию &lt;em&gt;copyTaxonomyFieldValues&lt;/em&gt;.
+Сначала мы используем &lt;em&gt;loadTaxonomyHiddenFields&lt;/em&gt; для получения internal names
+скрытых колонок. Затем загружаем source item.
+Далее мы строим строковые значения, для MM и MMMulti, которые будут присвоены
+соответствующим скрытым колонкам. Значения для multi и не-multi колонок строятся
+по-разному. Для multi мы создаём массив значений и объединяем его в строку с разделителем &lt;em&gt;;&lt;/em&gt;.
+В конце мы вызываем метод update, для обновления dest item.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/mm-data-result.png&#34;  /&gt;
+    
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Полный пример кода можно найти здесь:
+&lt;a href=&#34;https://github.com/biogenez/sp-rest-taxonomy&#34;&gt;https://github.com/biogenez/sp-rest-taxonomy&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Как добавить плитку в App Launcher в O365</title>
