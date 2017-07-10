@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>.ash</title>
-    <link>http://ashblog.ru/index.xml</link>
+    <link>http://ashblog.ru/</link>
     <description>Recent content on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
     <lastBuildDate>Wed, 22 Mar 2017 16:41:30 +0200</lastBuildDate>
-    <atom:link href="http://ashblog.ru/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://ashblog.ru/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>22032017</title>
@@ -42,120 +44,7 @@
       <description>&lt;p&gt;В SharePoint REST API нет официальной поддержки для установки значений
 полей типа Managed Metadata (Taxonomy).
 Но сделать это всё таки можно.
-&lt;/p&gt;
-
-&lt;p&gt;Итак, для начала нам понадобится список с колонками Managed Metadata и Managed Metadata Multi.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const LIST_TITLE = &#39;MMDataTestList&#39;;
-// internal field names
-const MM_FieldInternalName = &#39;MM&#39;;
-const MM_MULTI_FieldInternalName = &#39;MMMULTI&#39;;
-&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/mm-data-first-item.png&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;В примере я буду использовать библиотеку sp-pnp-js.
-Это позволит сократить кол-во строчек в коде, да и сам код сделает понятней.&lt;/p&gt;
-
-&lt;p&gt;При создании колонки типа Managed Metadata (Multi), автоматически создаётся скрытая колонка
-типа Note. Её Title состоит из имени соответствующей Managed Metadata колонки + &lt;em&gt;_0&lt;/em&gt;.
-В нашем случае это &lt;em&gt;MM_0&lt;/em&gt; и &lt;em&gt;MMMULTI_0&lt;/em&gt;.
-И здесь стоит быть внимательным, т.к. если создать колонку c именем &lt;em&gt;M M&lt;/em&gt;, а затем переименовть её,
-например в &lt;em&gt;My Metadata&lt;/em&gt;, то имя скрытой колонки не изменится, т.е. останется &lt;em&gt;M M_0&lt;/em&gt;.
-Но и здесь кроектся подвох. Дело в том, что если в имени скрытой колонки будут пробелы, то
-с помощью REST ей не получится присвоить значение.
-Таким образом колонки типа Managed Metadata лучше всего создавать так:
-сначала создаём колонку с названием из латинских букв без пробелов, а затем переименовываем её
-как нам захочется (если необходимо).
-Например, мы хотим создать колонку с именем &lt;em&gt;My Meta&lt;/em&gt;. Сначала создаём колонку с именем &lt;em&gt;MyMeta&lt;/em&gt;,
-затем переименовываем её в &lt;em&gt;My Meta&lt;/em&gt;. Скрытая колонка будет по-прежнему иметь имя &lt;em&gt;MyMeta_0&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Ниже приведён пример функции, которая находит скрытые колонки для наших Managed Metadata колонок,
-и присваивает их Internal Names переменным &lt;em&gt;mm_multi_hidden_field, mm_hidden_field&lt;/em&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;let mm_multi_hidden_field;
-let mm_hidden_field;
-
-function loadTaxonomyHiddenFields() {
-    return $pnp.sp.web.lists.getByTitle(LIST_TITLE).fields.select(&#39;Title&#39;, &#39;InternalName&#39;).get()
-        .then((fields) =&amp;gt; {
-            mm_hidden_field = _.find(fields, {
-                Title: (MM_FieldInternalName + &#39;_0&#39;)
-            }).InternalName;
-            
-            mm_multi_hidden_field = _.find(fields, {
-                Title: (MM_MULTI_FieldInternalName + &#39;_0&#39;)
-            }).InternalName;
-        });
-} 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Далее мы напишем функцию, которая скопирует значение Managed Metadata колонок
-из одного элемента списка в другой.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function getItemById(listTitle, id) {
-    return $pnp.sp.web.lists.getByTitle(listTitle).items.getById(id);
-}
-
-export function copyTaxonomyFieldValues(sourceItemID, destItemID) {
-    loadTaxonomyHiddenFields()
-        .then(() =&amp;gt; getItemById(LIST_TITLE, sourceItemID)
-            .select(MM_FieldInternalName, MM_MULTI_FieldInternalName).get())
-        .then((sourceItem) =&amp;gt; {
-
-            let resultValue = {};
-
-            // set single managed metadata field value
-            const mm_Value = sourceItem[MM_FieldInternalName];
-            const strMMDataValue = mm_Value ? mm_Value.Label + &amp;quot;|&amp;quot; + mm_Value.TermGuid : null;
-            resultValue[mm_hidden_field] = strMMDataValue;
-
-            // set multiple managed metadata field value
-            const mm_multi_Value = sourceItem[MM_MULTI_FieldInternalName];
-            const strMMMultiValue = mm_multi_Value ? _.map(mm_multi_Value.results, f =&amp;gt; (&#39;-1;#&#39; + f.Label + &#39;|&#39; + f.TermGuid)).join(&#39;;&#39;) : null;
-            resultValue[mm_multi_hidden_field] = strMMMultiValue;
-
-            console.log(resultValue);
-
-            return resultValue;
-        })
-        .then((r) =&amp;gt; getItemById(LIST_TITLE, destItemID).update(r))
-        .then(() =&amp;gt; console.log(&amp;quot;OK&amp;quot;))
-        .catch((err) =&amp;gt; console.log(err));
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Первая функция &lt;em&gt;getItemById&lt;/em&gt; - вспомогательная. Она возвращает элемент из списка.
-Давайте разберём функцию &lt;em&gt;copyTaxonomyFieldValues&lt;/em&gt;.
-Сначала мы используем &lt;em&gt;loadTaxonomyHiddenFields&lt;/em&gt; для получения internal names
-скрытых колонок. Затем загружаем source item.
-Далее мы строим строковые значения, для MM и MMMulti, которые будут присвоены
-соответствующим скрытым колонкам. Значения для multi и не-multi колонок строятся
-по-разному. Для multi мы создаём массив значений и объединяем его в строку с разделителем &lt;em&gt;;&lt;/em&gt;.
-В конце мы вызываем метод update, для обновления dest item.&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/mm-data-result.png&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Полный пример кода можно найти здесь:
-&lt;a href=&#34;https://github.com/biogenez/sp-rest-taxonomy&#34;&gt;https://github.com/biogenez/sp-rest-taxonomy&lt;/a&gt;&lt;/p&gt;</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -174,31 +63,7 @@ export function copyTaxonomyFieldValues(sourceItemID, destItemID) {
 &lt;/figure&gt;
 
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;В Office 365 появилась возможность добавлять плитки в App Launcher.&lt;br /&gt;
-Сделать это можно под учётной записью с правами Администратора.
-Для этого заходим в центр администрирования (плита Admin в App Launcher).
-Далее открываем категорию &lt;strong&gt;Settings&lt;/strong&gt;, кликаем на &lt;strong&gt;Add custom tiles for your organization.&lt;/strong&gt;&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/sp/add-custom-tile-admin.png&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Далее &lt;strong&gt;+ Add a custom tile&lt;/strong&gt;.
-Вводим Title, URL, Description, Image URL.
-Размер картинки должен быть строго 60x60. И доступен для
-анонимных пользователей.
-Далее жмём Save.
-Скорее всего иконка не появится сразу после создания.
-Необходимо подождать пока будет выполнена синхронизация на серверах Office 365.&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -246,121 +111,7 @@ export function copyTaxonomyFieldValues(sourceItemID, destItemID) {
 &lt;/figure&gt;
 
 
-&lt;p&gt;&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6093.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;1&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6362.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;2&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6107.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;3&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6111.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;4&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6135.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;5&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6137.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;6&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6196.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;7&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;5 дней в Амстердаме. Октябрь 2016.&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -384,10 +135,7 @@ export function copyTaxonomyFieldValues(sourceItemID, destItemID) {
 &lt;/figure&gt;
 
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Приехать на море, чтобы замёрзнуть за 2 минуты. А затем поехать обратно&amp;hellip;
-Воскресная тренировка Калининград-Зеленоградск-Калининград.&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -459,43 +207,7 @@ export function copyTaxonomyFieldValues(sourceItemID, destItemID) {
       
       <guid>http://ashblog.ru/sp/get-userbyid-pitfall/</guid>
       <description>&lt;p&gt;Что будет выведено на экран после выполнения следующего кода?
-&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;var byEmail = Context.Web.SiteUsers.GetByEmail(&amp;quot;user1@ashblog.ru&amp;quot;);
-var byID = Context.Web.SiteUsers.GetById(10); 
-
-Context.Load(byEmail, u =&amp;gt; u.Title);
-Context.Load(byID, u =&amp;gt; u.Title);
-Context.ExecuteQuery();
-
-var byEmail2 = Context.Web.SiteUsers.GetByEmail(&amp;quot;user1@ashblog.ru&amp;quot;);
-var byID2 = Context.Web.SiteUsers.GetById(10);
-
-var titleByEmail2 = byEmail2.Title;
-var titleByID2 = byID2.Title;
-
-Console.WriteLine(email);
-Console.WriteLine(byid);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;В первых двух строках мы запрашиваем пользователя по Id и Email.&lt;br /&gt;
-Затем указываем, что необходимо проинициализировать свойство Title для возвращаемого объекта User.
-И выполняем запрос - ExecuteQuery.&lt;br /&gt;
-Если мы попробуем сейчас вывести значение свойства Title для переменных
-byEmail и byID - то увидим два одинаковых значения.&lt;/p&gt;
-
-&lt;p&gt;Следующие две строки идентичны первым двум, за исключением того, что пользователя мы присваиваем другим переменным (byEmail2, byID2).
-Мы не выполняем дополнительный запрос ExecuteQuery(), т.к. ожидаем, что свойство SiteUsers уже проинициализировано.
-Далее присваиваем значение свойства Title переменным titleByEmail2 и titleByID2.
-И выводим значения на экран. Однако при запуске этого кода, мы получим исключение&lt;br /&gt;
-&lt;em&gt;The property or field has not been initialized.&lt;/em&gt;&lt;br /&gt;
-в строке:&lt;br /&gt;
-&lt;em&gt;var titleByID2 = byID2.Title;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Оказывается, что метод GetById не ищет пользователя в проинициализированной коллекции.
-В этом методе всегда создаётся запрос на получение нового значения (пользователя).
-Именно, из-за этого возникло исключение, т.к. для &amp;ldquo;нового&amp;rdquo; пользователя мы не отправляли
-запрос на сервер и не запрашивали свойство Title.&lt;/p&gt;</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -520,315 +232,7 @@ byEmail и byID - то увидим два одинаковых значения
       <description>&lt;p&gt;Обычно отладка Remote Event Receivers в SharePoint Online выполняется с помощью Service Bus.
 Я писал подробно про это &lt;a href=&#34;http://blog.virtosoftware.com/2014/12/creating-and-debugging-of-remote-event.html&#34;&gt;здесь&lt;/a&gt; и &lt;a href=&#34;http://blog.virtosoftware.com/2015/01/adding-remote-event-receivers-to-list.html&#34;&gt;здесь&lt;/a&gt;.
 Сегодня мы рассмотрим другой (более простой) путь решения этой задачи.&lt;br /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Если коротко, то всё что нам нужно - это использовать &lt;strong&gt;&lt;a href=&#34;https://ngrok.com/&#34;&gt;ngrok&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
-На странице продукта коротко и ёмко описано его предназначение: ngrok - secure tunnels to localhost.&lt;/p&gt;
-
-&lt;p&gt;Первым делом качаем &lt;a href=&#34;https://ngrok.com/download&#34;&gt;ngrok&lt;/a&gt;&lt;br /&gt;
-Распаковываем архив в любую директорию.&lt;br /&gt;
-Открываем Visual Studio и создаём проект SharePoint Add-In (Provider-Hosted).&lt;br /&gt;
-Кликаем мышкой по имени add-in project (не web) -&amp;gt; нажимем F4.&lt;br /&gt;
-Выбираем &lt;strong&gt;true&lt;/strong&gt; для параметра &lt;strong&gt;Handle add-in installed&lt;/strong&gt;&lt;br /&gt;
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-addin-installed-rer.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Handle add-in installed&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;В результате предыдущего действия будет создан &lt;strong&gt;.svc&lt;/strong&gt; сервис, который будет вызываться после того,
-как наше решение будет установлено на портале.
-Этот сервис является примером удалённого обработчика данных (Remote Event Receiver).&lt;/p&gt;
-
-&lt;p&gt;Если на данном этапе нажать F5, то мы получим предупреждение от Visual Studio, о том, мы мы не сможем
-отлаживать Remote Event Receivers, т.к. для этого необходимо настроить Service Bus.&lt;br /&gt;
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-addin-servicebus-msg.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Предупреждение: MS Service Bus Connection&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;В процессе отладки адресом нашего приложения будет localhost, который недоступен извне.
-Именно поэтому в Visual Studio появилось сообщение о настройке Service Bus.&lt;/p&gt;
-
-&lt;p&gt;ngrok позволит решить нам эту проблему.&lt;br /&gt;
-Итак, открываем папку с &lt;strong&gt;ngrok.exe&lt;/strong&gt; и запускаем команду&lt;br /&gt;
-&lt;strong&gt;ngrok http -host-header=&amp;ldquo;localhost:[port]&amp;rdquo; [port]&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;программу-ngrok-не-закрываем-туннель-работает-пока-работает-ngrok&#34;&gt;Программу ngrok не закрываем (туннель работает, пока работает ngrok)&lt;/h4&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/ngrok-run.png&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;&lt;strong&gt;[port]&lt;/strong&gt; заменяем на порт, который используется IIS Express для доступа к нашем сайту на localhost.
-Порт можно получить выбрав Web-проект и нажав F4.
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-addin-localhost-port.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Получаем порт от localhost (для http)&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;После запуска ngrok мы получили временный адрес, по которому можно обращаться извне к localhost.&lt;br /&gt;
-Нажимаем правой кнопкой мыши по web-проекту, выбираем &lt;strong&gt;Set as StartUp Project&lt;/strong&gt;. Жмём &lt;strong&gt;F5&lt;/strong&gt;&lt;br /&gt;
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/set-as-startup-project.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Set as StartUp Project&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Открываем любой браузер и вводим адрес туннеля (используем https, &lt;a href=&#34;https://e1e1e1e1e.ngrok.io&#34;&gt;https://e1e1e1e1e.ngrok.io&lt;/a&gt;)
-В результате получим окно вида:
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/ngrok-access-ok.png&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Отлично, наш компьютер доступен извне. Теперь любой желающий может получить доступ к нашему
-сайту, зная ngrok-адрес. На картинке выше мы видим стандартное сообщение об ошибке, которое
-появилось в SharePointContextFilter.&lt;/p&gt;
-
-&lt;p&gt;Попробуем запустить add-in в режиме отладки. Для этого вернём тип запуска проекта.&lt;br /&gt;
-Выбираем в Solution Explorer наше решение, клик правой кнопкой мыши, выбираем &lt;strong&gt;Set StartUp Projects&amp;hellip;&lt;/strong&gt;&lt;br /&gt;
-Выбираем &lt;strong&gt;Multiple startup projects&lt;/strong&gt;, нажимаем &lt;strong&gt;OK&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Теперь необходимо открыть и изменить файл &lt;strong&gt;AppManifest.xml&lt;/strong&gt;, для того, чтобы сменить адрес, по которому будет происходить
-обращение к нашему сервису. Выбираем файл в Solution Explorer -&amp;gt; жмём F7.&lt;br /&gt;
-Заменяем значение элемента &lt;strong&gt;InstallEventEndpoint&lt;/strong&gt; на ngrok-адрес туннеля.
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/ngrok-rer-address.PNG&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Открываем файл с кодом сервиса &lt;strong&gt;AppEventReceiver.svc.cs&lt;/strong&gt;, ставим breakpoint в первойм строчке метода &lt;strong&gt;ProcessEvent&lt;/strong&gt;
-Запускаем отладку: &lt;strong&gt;F5&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;hellip;&amp;hellip;ждём&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Ура! Breakpoint сработал.&lt;br /&gt;
-Однако, если выполнить шаги дальше, то мы увидим, что &lt;strong&gt;clientContext&lt;/strong&gt; равен &lt;strong&gt;null&lt;/strong&gt;. Причина в том, что в
-результате запуска в режиме отладки, Visual Studio прописывает localhost адрес в качестве remote endpoint
-для нашего приложения.
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/ngrok-endpoint-problem.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Почти получилось...&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Для того, чтобы обойти эту проблему зарегистриуем наш add-in вручную.
-Октроем страницу: [dev_site_url]/_layouts/appregnew.aspx,&lt;br /&gt;
-Где [dev_site_url] - адрес сайта, на котором будет тестироваться приложение&lt;br /&gt;
-(например: &lt;a href=&#34;https://testportal.sharepoint.com/sites/dev/_layouts/appregnew.aspx&#34;&gt;https://testportal.sharepoint.com/sites/dev/_layouts/appregnew.aspx&lt;/a&gt;)&lt;br /&gt;
-Нажимаем Generate для создания Client ID и Client Secret. В качестве доменного App Domain и Redirect Url указываем адрес
-полученный при запуске ngrok. После этого жмём кнопку Save и полученную информацию сохраняем куда-нибудь в текстовый файл
-(чтобы не потерять Client Secret).&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-reg-addin.png&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Вернёмся в Visual Studio, выбираем web-проект, и устанавливаем для него &lt;strong&gt;Set as StartUp Project&lt;/strong&gt;. Открываем файл web.config
-и заменяем в appSettings ClientId и ClientSecret на сгенерированные значения.
-Далее нажимаем правой кнопкой по add-in проекту и выбираем &lt;strong&gt;Publish&amp;hellip;&lt;/strong&gt;.&lt;br /&gt;
-В &lt;strong&gt;Current profile:&lt;/strong&gt; выбираем &lt;strong&gt;New..&lt;/strong&gt;. Затем &lt;strong&gt;Create new profile&lt;/strong&gt;.
-Вводим любое слово для Profile Name (например, spNgrokProfile). Нажимаем кнопку &lt;strong&gt;Next&lt;/strong&gt;.
-Далее вводим Client ID и Client Secret, полученные на странице &lt;strong&gt;appregnew.aspx&lt;/strong&gt;.
-И жмём кнопку &lt;strong&gt;Finish&lt;/strong&gt;. После этого мы можем собрать add-in: нажимаем &lt;strong&gt;Package the add-in&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;В открывшемся окне вводим https адрес ngrok-туннелля, и проверяем Client ID. Далее &lt;strong&gt;Finish&lt;/strong&gt;.
-После сборки add-in откроется папка с app-файлом. Далее открываем в браузере dev-сайт -&amp;gt; Site Contents -&amp;gt;
-открываем библиотеку &lt;strong&gt;App Packages&lt;/strong&gt;. Нажимаем кнопку Upload и загружаем app-файл.&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-apppackages-lib.png&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Возвращаемся в Visual Studio, нажимаем &lt;strong&gt;F5&lt;/strong&gt; (не забываем проверить, что web-проект выбран в качестве StartUp Project).
-Итак, к этому моменту у нас залит add-in в App Packages, запущен web-проект в режиме отладки,
-запущен ngrok, и установлен breakpoint в Event Receiver (метод ProcessEvent).
-Осталось установить Add-In и убедиться, что breakpoint сработает. Для на dev-сайте переходим в список
-&lt;strong&gt;Apps in Testing&lt;/strong&gt; -&amp;gt; нажимаем на &lt;strong&gt;new app to deploy&lt;/strong&gt; -&amp;gt; в модальном окне выбираем package: spNgrok -&amp;gt;
-адрес (Deploy app to) не меняем -&amp;gt; нажимаем &lt;strong&gt;Deploy&lt;/strong&gt; -&amp;gt; далее &lt;strong&gt;Trust It&lt;/strong&gt;.&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-deploy-addin.png&#34;  /&gt;
-    
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Вернёмся в &lt;strong&gt;Site Contents&lt;/strong&gt; и увидим, что наше приложение устанавливается.
-Установка может занять несколько минут (даже для пустого add-in, и ), поэтому не удивляемся,
-что наш breakpoint ещё не сработал. Ждём&amp;hellip;&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-addin-install-inprogress.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;In Progress&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;И вот спустя несколько минут срабатывает breakpoint:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-fire-breakpoint.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Breakpoint&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Нажимаем &lt;strong&gt;F5&lt;/strong&gt; для прололжения выполнения работы программы, и ловим исключение: &lt;strong&gt;AudienceUriValidationFailedException&lt;/strong&gt;&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-audience-exception.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Audience Exception&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;В ошибке говорится, что-то про localhost. Ок. Для того, чтобы решить эту проблему нам необходимо выполнить
-последний шаг. Открываем web.config нашего web-проекта и добавляем в &lt;strong&gt;appSettings&lt;/strong&gt; следующую строчку:&lt;br /&gt;
-&lt;strong&gt;&lt;code&gt;&amp;lt;add key=&amp;quot;HostedAppHostNameOverride&amp;quot; value=&amp;quot;e1e1e1e1e.ngrok.io;localhost&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/strong&gt;
-(Замените &lt;strong&gt;e1e1e1e1e.ngrok.io&lt;/strong&gt; на ваш адрес ngrok-туннеля без https префикса)&lt;br /&gt;
-При сохранении web.config, Visual Studio сообщит, что необходимо выйти из debug-режима. Нажимаем OK.
-Снова нажимаем &lt;strong&gt;F5&lt;/strong&gt;. Возвращаемся в Site Contents и видим, что при установке возникла ошибка:
-&lt;strong&gt;Sorry, something went wrong with adding the app. Click to retry.&lt;/strong&gt;&lt;br /&gt;
-Нажимаем &lt;strong&gt;Click to retry&lt;/strong&gt; и ждём срабатывание breakpoint.&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spngrok-final-breakpoint-ok.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Breakpoint сработал. ClientContext не равен null&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Цель достигнута. ngrok отлично подходит для отладки Remote Event Receivers списков и элементов, webhooks, httpsend action.
-Так же можно использовать его для демонстрации работы add-in без развёртывания приложения на внешний хостинг.
-Минусом является то, что в бесплатной версии ngrok-туннель живёт, пока не закрыто приложение ngrok.
-В платной версии можно создавать постоянные адреса.&lt;/p&gt;</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -864,83 +268,7 @@ byEmail и byID - то увидим два одинаковых значения
       <description>&lt;p&gt;Создание тестовых данных в SharePoint - одна из тех задач, которая периодически возникает во время:
 разработки, тестирования, демонстрации портала.
 Сегодня рассмотрим как можно быстро создать список, заполненный случайными данными.
-&lt;/p&gt;
-
-&lt;p&gt;Для этого нам понадобится nuget package: &lt;a href=&#34;https://www.nuget.org/packages/SPS.SPRandom.Core/&#34;&gt;SPS.SPRandom.Core&lt;/a&gt;&lt;br /&gt;
-Проект пока в статусе Alpha, однако для решения некоторых задач уже может использоваться.&lt;br /&gt;
-Для примера, я создал проект в Visual Studio - Console Program.
-В &amp;ldquo;Package Manager Console&amp;rdquo; пишем команду:&lt;br /&gt;
-&lt;strong&gt;Install-Package SPS.SPRandom.Core&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Заменим код файла Program.cs на следующий:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;using OfficeDevPnP.Core;
-using SPS.SPRandom.Core;
-using System.Configuration;
-
-namespace SPConsole
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            AuthenticationManager m = new AuthenticationManager();
-
-            var siteUrl = ConfigurationManager.AppSettings[&amp;quot;TestSiteUrl&amp;quot;];
-            var userLogin = ConfigurationManager.AppSettings[&amp;quot;TestUserLogin&amp;quot;];
-            var userPassword = ConfigurationManager.AppSettings[&amp;quot;TestUserPassword&amp;quot;];
-
-            var listName = &amp;quot;MyTestList&amp;quot;;
-
-            using (var context = m.GetSharePointOnlineAuthenticatedContextTenant(siteUrl, userLogin, userPassword))
-            {
-                //init generator with current sp context
-                SPRandomGenerator spGen = new SPRandomGenerator(context);
-
-                //create test list (generic type).
-                var testList = spGen.CreateList(context.Web, listName, onlyGenericListBaseType: true);
-
-                //add fields for testList 
-                var fieldInternaNames = spGen.CreateFieldsOfSupportedTypes(testList, addPrefixBeforeFieldName: true);
-
-                //create 50 items with random data
-                spGen.FillListWithRandomData(testList, 50);
-
-            }
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Итак, сначала мы создаём контекст для подключения к SharePoint Online.&lt;br /&gt;
-Затем инициализируем генератор &lt;strong&gt;SPRandomGenerator&lt;/strong&gt;.&lt;br /&gt;
-Создаём список &lt;strong&gt;CreateList&lt;/strong&gt;. Последний параметр указывает, что создать нужно именно список (Generic List). В противном случае герератор может создать либо список, либо библиотеку (для создания библиотеки есть отдeльный метод &lt;strong&gt;CreateLibrary&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Следующая строка кода вызывает метод &lt;strong&gt;CreateFieldsOfSupportedTypes&lt;/strong&gt;, для того, чтобы создать в списке колонки всех поддерживаемых типов&lt;br /&gt;
-&lt;em&gt;(на момент написания статьи: Integer, Text, Note, DateTime, Choice, Lookup, Boolean, Number, Currency, URL, MultiChoice,.User)&lt;/em&gt;&lt;br /&gt;
-Параметр &lt;strong&gt;addPrefixBeforeFieldName&lt;/strong&gt; указывает, что к имени колонки будет добавлено название типа колонки. Например: &lt;strong&gt;Text_&lt;/strong&gt;DIaxD&lt;/p&gt;
-
-&lt;p&gt;В строке &lt;strong&gt;spGen.FillListWithRandomData(testList, 50);&lt;/strong&gt; - вызывается код для создания 50 элементов, которые будут заполнены случайными данными.
-Выполним код и посмотрим результат:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/spgen_50_items.png&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Созданный список с элементами.&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Проект пока в самом &amp;ldquo;зачаточном&amp;rdquo; варианте.&lt;br /&gt;
-Код здесь: &lt;a href=&#34;https://biogenez.github.io/SPS.SPRandom/&#34;&gt;https://biogenez.github.io/SPS.SPRandom/&lt;/a&gt;&lt;/p&gt;</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -965,6 +293,100 @@ namespace SPConsole
 
 
 &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SP: Перенос списков между коллекциями сайтов (&#43; Person, Lookup поля)</title>
+      <link>http://ashblog.ru/sp/sponline-migrate-list/</link>
+      <pubDate>Wed, 24 Aug 2016 15:47:25 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/sp/sponline-migrate-list/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>baltic sea</title>
+      <link>http://ashblog.ru/post/second/</link>
+      <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/post/second/</guid>
+      <description>&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/bsea.jpg&#34;  /&gt;
+    
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;baltic sea&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>stone</title>
+      <link>http://ashblog.ru/post/third/</link>
+      <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/post/third/</guid>
+      <description>&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/stone.jpg&#34;  /&gt;
+    
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;stone&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>winter</title>
+      <link>http://ashblog.ru/post/first/</link>
+      <pubDate>Sat, 09 Jan 2016 18:46:53 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/post/first/</guid>
+      <description>&lt;figure &gt;
+    
+    
+            &lt;img src=&#34;http://cdn.ashblog.ru/images/winter.jpg&#34;  /&gt;
+    
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;-15&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>.я</title>
+      <link>http://ashblog.ru/about/</link>
+      <pubDate>Sat, 09 Jan 2016 18:45:08 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/about/</guid>
+      <description> -.о .name(alexander)
+.russia(kaliningrad)
+.it(c#,js,sharepoint,office365)
+.sport(running,cycling)
+ </description>
     </item>
     
   </channel>

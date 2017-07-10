@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bike on .ash</title>
-    <link>http://ashblog.ru/categories/bike/index.xml</link>
+    <link>http://ashblog.ru/categories/bike/</link>
     <description>Recent content in Bike on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
-    <atom:link href="http://ashblog.ru/categories/bike/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Oct 2016 19:46:24 +0200</lastBuildDate>
+    
+	<atom:link href="http://ashblog.ru/categories/bike/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>09102016</title>
@@ -29,10 +32,7 @@
 &lt;/figure&gt;
 
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Приехать на море, чтобы замёрзнуть за 2 минуты. А затем поехать обратно&amp;hellip;
-Воскресная тренировка Калининград-Зеленоградск-Калининград.&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -1,35 +1,68 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>.ash</title>
-    <link>http://ashblog.ru/categories/index.xml</link>
-    <description>Recent content on .ash</description>
+    <title>Categories on .ash</title>
+    <link>http://ashblog.ru/categories/</link>
+    <description>Recent content in Categories on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
-    <atom:link href="http://ashblog.ru/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Mar 2017 16:41:30 +0200</lastBuildDate>
+    
+	<atom:link href="http://ashblog.ru/categories/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
-      <title>22032017</title>
-      <link>http://ashblog.ru/post/22032017/</link>
+      <title></title>
+      <link>http://ashblog.ru/categories/</link>
       <pubDate>Wed, 22 Mar 2017 16:41:30 +0200</pubDate>
       
-      <guid>http://ashblog.ru/post/22032017/</guid>
-      <description>&lt;figure &gt;
+      <guid>http://ashblog.ru/categories/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>Bike</title>
+      <link>http://ashblog.ru/categories/bike/</link>
+      <pubDate>Mon, 10 Oct 2016 19:46:24 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/categories/bike/</guid>
+      <description></description>
+    </item>
     
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/22032017-1.jpg&#34;  /&gt;
+    <item>
+      <title>Main</title>
+      <link>http://ashblog.ru/categories/main/</link>
+      <pubDate>Wed, 22 Mar 2017 16:41:30 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/categories/main/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>Music</title>
+      <link>http://ashblog.ru/categories/music/</link>
+      <pubDate>Thu, 29 Sep 2016 22:07:48 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/categories/music/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>Sp</title>
+      <link>http://ashblog.ru/categories/sp/</link>
+      <pubDate>Tue, 07 Mar 2017 10:34:23 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/categories/sp/</guid>
+      <description></description>
+    </item>
     
-    &lt;figcaption&gt;
-        &lt;h4&gt;Калининградский Париж-Рубэ&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;&lt;/p&gt;</description>
+    <item>
+      <title>Video</title>
+      <link>http://ashblog.ru/categories/video/</link>
+      <pubDate>Thu, 29 Sep 2016 22:07:48 +0200</pubDate>
+      
+      <guid>http://ashblog.ru/categories/video/</guid>
+      <description></description>
     </item>
     
   </channel>

@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Main on .ash</title>
-    <link>http://ashblog.ru/categories/main/index.xml</link>
+    <link>http://ashblog.ru/categories/main/</link>
     <description>Recent content in Main on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
-    <atom:link href="http://ashblog.ru/categories/main/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Mar 2017 16:41:30 +0200</lastBuildDate>
+    
+	<atom:link href="http://ashblog.ru/categories/main/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>22032017</title>
@@ -77,121 +80,7 @@
 &lt;/figure&gt;
 
 
-&lt;p&gt;&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6093.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;1&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6362.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;2&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6107.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;3&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6111.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;4&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6135.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;5&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6137.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;6&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;figure &gt;
-    
-    
-            &lt;img src=&#34;http://cdn.ashblog.ru/images/amsterdam2016/6196.jpg&#34;  /&gt;
-    
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;7&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;5 дней в Амстердаме. Октябрь 2016.&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -215,10 +104,7 @@
 &lt;/figure&gt;
 
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Приехать на море, чтобы замёрзнуть за 2 минуты. А затем поехать обратно&amp;hellip;
-Воскресная тренировка Калининград-Зеленоградск-Калининград.&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

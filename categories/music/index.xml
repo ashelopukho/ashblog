@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Music on .ash</title>
-    <link>http://ashblog.ru/categories/music/index.xml</link>
+    <link>http://ashblog.ru/categories/music/</link>
     <description>Recent content in Music on .ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru_RU</language>
-    <atom:link href="http://ashblog.ru/categories/music/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Sep 2016 22:07:48 +0200</lastBuildDate>
+    
+	<atom:link href="http://ashblog.ru/categories/music/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>freed from desire</title>
