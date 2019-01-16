@@ -3,136 +3,94 @@ PRODID:-//github.com/rianjs/ical.net//NONSGML ical.net 4.0//EN
 VERSION:2.0
 X-WR-CALNAME:Ash Test Calendar
 BEGIN:VEVENT
-DTEND:20190123T194729
-DTSTAMP:20190116T154729Z
-DTSTART:20190123T174729
+DTEND:20190123T195110
+DTSTAMP:20190116T155110Z
+DTSTART:20190123T175110
 SEQUENCE:0
-SUMMARY:RENAT5qdd
-UID:d807c93f-76b9-40e8-8fd3-66e03e82bddf
+SUMMARY:RENATc5mg
+UID:e030ed4f-92f4-4795-98c4-33f47a1bab55
 X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//
  E\n    N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange S
  erver ve\n    rsion rmj.rmm.rup.rpr">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n
- <!-- Converted \n    from text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="e
- n-us"><FONT FACE="Cali\n    bri">This is some</FONT></SPAN><SPAN LANG="en
- -us"><B> <FONT FACE="Calibri"\n    >HTML</FONT></B></SPAN><SPAN LANG="en-
- us"><FONT FACE="Calibri"></FONT></SP\n    AN><SPAN LANG="en-us"><U> <FONT
-  FACE="Calibri">formatted</FONT></U></SPAN>\n    <SPAN LANG="en-us"><FONT
-  FACE="Calibri"></FONT></SPAN><SPAN LANG="en-us"><\n    I> <FONT FACE="Ca
- libri">text</FONT></I></SPAN><SPAN LANG="en-us"><FONT FAC\n    E="Calibri
- ">.</FONT></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n</BODY>\n</HT\n    ML>
+ \n    <!-- Converted from text/rtf format -->\n\n\n    <UL><LI>ABCDEF</LI
+ ><LI>ABCDEF</LI><LI>ABCDEF</LI><LI>ABCDEF</LI></UL>\n\n</BODY>\n</HTML>
 END:VEVENT
 BEGIN:VEVENT
-DTEND:20190124T194729
-DTSTAMP:20190116T154729Z
-DTSTART:20190124T174729
+DTEND:20190124T195110
+DTSTAMP:20190116T155111Z
+DTSTART:20190124T175110
 SEQUENCE:0
-SUMMARY:RENATmjot
-UID:95f91bb8-0a80-4f64-b768-f329ec535fc5
+SUMMARY:RENATug0h
+UID:111f370e-3594-4b15-bcbb-6e2d1f462acf
 X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//
  E\n    N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange S
  erver ve\n    rsion rmj.rmm.rup.rpr">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n
- <!-- Converted \n    from text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="e
- n-us"><FONT FACE="Cali\n    bri">This is some</FONT></SPAN><SPAN LANG="en
- -us"><B> <FONT FACE="Calibri"\n    >HTML</FONT></B></SPAN><SPAN LANG="en-
- us"><FONT FACE="Calibri"></FONT></SP\n    AN><SPAN LANG="en-us"><U> <FONT
-  FACE="Calibri">formatted</FONT></U></SPAN>\n    <SPAN LANG="en-us"><FONT
-  FACE="Calibri"></FONT></SPAN><SPAN LANG="en-us"><\n    I> <FONT FACE="Ca
- libri">text</FONT></I></SPAN><SPAN LANG="en-us"><FONT FAC\n    E="Calibri
- ">.</FONT></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n</BODY>\n</HT\n    ML>
+ \n    <!-- Converted from text/rtf format -->\n\n\n    <UL><LI>ABCDEF</LI
+ ><LI>ABCDEF</LI><LI>ABCDEF</LI><LI>ABCDEF</LI></UL>\n\n</BODY>\n</HTML>
 END:VEVENT
 BEGIN:VEVENT
-DTEND:20190125T194729
-DTSTAMP:20190116T154729Z
-DTSTART:20190125T174729
+DTEND:20190125T195110
+DTSTAMP:20190116T155111Z
+DTSTART:20190125T175110
 SEQUENCE:0
-SUMMARY:RENATgrge
-UID:1740b3f9-b128-4698-8883-a697fdd85d6b
+SUMMARY:RENAThqye
+UID:6437348d-43b5-4f93-a1b7-c09417578258
 X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//
  E\n    N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange S
  erver ve\n    rsion rmj.rmm.rup.rpr">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n
- <!-- Converted \n    from text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="e
- n-us"><FONT FACE="Cali\n    bri">This is some</FONT></SPAN><SPAN LANG="en
- -us"><B> <FONT FACE="Calibri"\n    >HTML</FONT></B></SPAN><SPAN LANG="en-
- us"><FONT FACE="Calibri"></FONT></SP\n    AN><SPAN LANG="en-us"><U> <FONT
-  FACE="Calibri">formatted</FONT></U></SPAN>\n    <SPAN LANG="en-us"><FONT
-  FACE="Calibri"></FONT></SPAN><SPAN LANG="en-us"><\n    I> <FONT FACE="Ca
- libri">text</FONT></I></SPAN><SPAN LANG="en-us"><FONT FAC\n    E="Calibri
- ">.</FONT></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n</BODY>\n</HT\n    ML>
+ \n    <!-- Converted from text/rtf format -->\n\n\n    <UL><LI>ABCDEF</LI
+ ><LI>ABCDEF</LI><LI>ABCDEF</LI><LI>ABCDEF</LI></UL>\n\n</BODY>\n</HTML>
 END:VEVENT
 BEGIN:VEVENT
-DTEND:20190126T194729
-DTSTAMP:20190116T154729Z
-DTSTART:20190126T174729
+DTEND:20190126T195110
+DTSTAMP:20190116T155111Z
+DTSTART:20190126T175110
 SEQUENCE:0
-SUMMARY:RENATxfb3
-UID:d72c4acd-eedb-48f4-95bd-366abd0ce76c
+SUMMARY:RENATyyc2
+UID:a936db96-0b8b-4ad4-a8a8-2e05899b7608
 X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//
  E\n    N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange S
  erver ve\n    rsion rmj.rmm.rup.rpr">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n
- <!-- Converted \n    from text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="e
- n-us"><FONT FACE="Cali\n    bri">This is some</FONT></SPAN><SPAN LANG="en
- -us"><B> <FONT FACE="Calibri"\n    >HTML</FONT></B></SPAN><SPAN LANG="en-
- us"><FONT FACE="Calibri"></FONT></SP\n    AN><SPAN LANG="en-us"><U> <FONT
-  FACE="Calibri">formatted</FONT></U></SPAN>\n    <SPAN LANG="en-us"><FONT
-  FACE="Calibri"></FONT></SPAN><SPAN LANG="en-us"><\n    I> <FONT FACE="Ca
- libri">text</FONT></I></SPAN><SPAN LANG="en-us"><FONT FAC\n    E="Calibri
- ">.</FONT></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n</BODY>\n</HT\n    ML>
+ \n    <!-- Converted from text/rtf format -->\n\n\n    <UL><LI>ABCDEF</LI
+ ><LI>ABCDEF</LI><LI>ABCDEF</LI><LI>ABCDEF</LI></UL>\n\n</BODY>\n</HTML>
 END:VEVENT
 BEGIN:VEVENT
-DTEND:20190127T194729
-DTSTAMP:20190116T154729Z
-DTSTART:20190127T174729
+DTEND:20190127T195110
+DTSTAMP:20190116T155111Z
+DTSTART:20190127T175110
 SEQUENCE:0
-SUMMARY:RENATp2kb
-UID:961cd8f5-1fa0-404a-ba44-8f31fd18a470
+SUMMARY:RENATkg15
+UID:8ea1d7a2-8a39-4778-afcf-56981171540c
 X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//
  E\n    N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange S
  erver ve\n    rsion rmj.rmm.rup.rpr">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n
- <!-- Converted \n    from text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="e
- n-us"><FONT FACE="Cali\n    bri">This is some</FONT></SPAN><SPAN LANG="en
- -us"><B> <FONT FACE="Calibri"\n    >HTML</FONT></B></SPAN><SPAN LANG="en-
- us"><FONT FACE="Calibri"></FONT></SP\n    AN><SPAN LANG="en-us"><U> <FONT
-  FACE="Calibri">formatted</FONT></U></SPAN>\n    <SPAN LANG="en-us"><FONT
-  FACE="Calibri"></FONT></SPAN><SPAN LANG="en-us"><\n    I> <FONT FACE="Ca
- libri">text</FONT></I></SPAN><SPAN LANG="en-us"><FONT FAC\n    E="Calibri
- ">.</FONT></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n</BODY>\n</HT\n    ML>
+ \n    <!-- Converted from text/rtf format -->\n\n\n    <UL><LI>ABCDEF</LI
+ ><LI>ABCDEF</LI><LI>ABCDEF</LI><LI>ABCDEF</LI></UL>\n\n</BODY>\n</HTML>
 END:VEVENT
 BEGIN:VEVENT
-DTEND:20190128T194729
-DTSTAMP:20190116T154729Z
-DTSTART:20190128T174729
+DTEND:20190128T195110
+DTSTAMP:20190116T155111Z
+DTSTART:20190128T175110
 SEQUENCE:0
-SUMMARY:RENATptzz
-UID:2fd06e84-7a8c-4ca8-b896-4233a5209abf
+SUMMARY:RENATim00
+UID:41942d11-c8c5-44ef-a088-310649604d91
 X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//
  E\n    N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange S
  erver ve\n    rsion rmj.rmm.rup.rpr">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n
- <!-- Converted \n    from text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="e
- n-us"><FONT FACE="Cali\n    bri">This is some</FONT></SPAN><SPAN LANG="en
- -us"><B> <FONT FACE="Calibri"\n    >HTML</FONT></B></SPAN><SPAN LANG="en-
- us"><FONT FACE="Calibri"></FONT></SP\n    AN><SPAN LANG="en-us"><U> <FONT
-  FACE="Calibri">formatted</FONT></U></SPAN>\n    <SPAN LANG="en-us"><FONT
-  FACE="Calibri"></FONT></SPAN><SPAN LANG="en-us"><\n    I> <FONT FACE="Ca
- libri">text</FONT></I></SPAN><SPAN LANG="en-us"><FONT FAC\n    E="Calibri
- ">.</FONT></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n</BODY>\n</HT\n    ML>
+ \n    <!-- Converted from text/rtf format -->\n\n\n    <UL><LI>ABCDEF</LI
+ ><LI>ABCDEF</LI><LI>ABCDEF</LI><LI>ABCDEF</LI></UL>\n\n</BODY>\n</HTML>
 END:VEVENT
 BEGIN:VEVENT
-DTEND:20190129T194729
-DTSTAMP:20190116T154729Z
-DTSTART:20190129T174729
+DTEND:20190129T195110
+DTSTAMP:20190116T155111Z
+DTSTART:20190129T175110
 SEQUENCE:0
-SUMMARY:RENAT3fhv
-UID:fff8f617-ce83-44ba-9622-f8d264315c9d
+SUMMARY:RENATg0fv
+UID:050af1fd-d6ae-41d7-8d48-ac88c825dbda
 X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//
  E\n    N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange S
  erver ve\n    rsion rmj.rmm.rup.rpr">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n
- <!-- Converted \n    from text/rtf format -->\n\n<P DIR=LTR><SPAN LANG="e
- n-us"><FONT FACE="Cali\n    bri">This is some</FONT></SPAN><SPAN LANG="en
- -us"><B> <FONT FACE="Calibri"\n    >HTML</FONT></B></SPAN><SPAN LANG="en-
- us"><FONT FACE="Calibri"></FONT></SP\n    AN><SPAN LANG="en-us"><U> <FONT
-  FACE="Calibri">formatted</FONT></U></SPAN>\n    <SPAN LANG="en-us"><FONT
-  FACE="Calibri"></FONT></SPAN><SPAN LANG="en-us"><\n    I> <FONT FACE="Ca
- libri">text</FONT></I></SPAN><SPAN LANG="en-us"><FONT FAC\n    E="Calibri
- ">.</FONT></SPAN><SPAN LANG="en-us"></SPAN></P>\n\n</BODY>\n</HT\n    ML>
+ \n    <!-- Converted from text/rtf format -->\n\n\n    <UL><LI>ABCDEF</LI
+ ><LI>ABCDEF</LI><LI>ABCDEF</LI><LI>ABCDEF</LI></UL>\n\n</BODY>\n</HTML>
 END:VEVENT
 END:VCALENDAR
